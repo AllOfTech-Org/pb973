@@ -195,7 +195,7 @@ function initMagneticButtons() {
   if (!isDesktopPointerUX()) return;
   const strength = 0.2;
   const sel =
-    '.btn-outline, .btn-solid, .btn-email, .btn-submit, .btn-join, .btn-ghost, .nav-icon, .social-btn, .club-tab, .faq-q';
+    '.btn-outline, .btn-solid, .btn-email, .btn-submit, .btn-join, .btn-ghost, .nav-icon, .social-btn, .club-tab';
   document.querySelectorAll(sel).forEach((el) => {
     el.addEventListener('mousemove', (e) => {
       const r = el.getBoundingClientRect();
@@ -261,7 +261,7 @@ function initCustomCursor() {
   document.addEventListener(
     'mouseover',
     (e) => {
-      if (e.target.closest('a, button, .club-tab, input, textarea, select, .faq-q, .plan-card')) {
+      if (e.target.closest('a, button, .club-tab, input, textarea, select, .faq-v2-trigger, .plan-card')) {
         glow.classList.add('is-hover');
       }
     },
@@ -270,7 +270,7 @@ function initCustomCursor() {
   document.addEventListener(
     'mouseout',
     (e) => {
-      if (e.target.closest('a, button, .club-tab, input, textarea, select, .faq-q, .plan-card')) {
+      if (e.target.closest('a, button, .club-tab, input, textarea, select, .faq-v2-trigger, .plan-card')) {
         glow.classList.remove('is-hover');
       }
     },
@@ -660,17 +660,70 @@ function getPageContentBlocks(pageEl) {
   return [...pageEl.children].filter((el) => el.tagName !== 'FOOTER');
 }
 
+/** True when this document actually contains that page's sections (not an empty SPA stub). */
+function pageHasInDocumentContent(pageEl) {
+  if (!pageEl) return false;
+  return getPageContentBlocks(pageEl).length > 0;
+}
+
+function htmlPathForPageId(id) {
+  const map = {
+    home: 'index.html',
+    about: 'about.html',
+    contact: 'contact.html',
+    junior: 'junior.html',
+    membership: 'membership.html',
+    press: 'press.html',
+    faq: 'faq.html',
+  };
+  return map[id] || null;
+}
+
+/** Junior Programs: Dinkin Dinos vs Competitive Edge tab switcher (junior.html). */
+function switchProgram(prog) {
+  document.querySelectorAll('.program-tab-btn').forEach((btn) => {
+    const isTarget = btn.id === 'tab-' + prog;
+    btn.classList.toggle('active', isTarget);
+    btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('.program-panel').forEach((panel) => {
+    const isTarget = panel.id === 'panel-' + prog;
+    panel.classList.toggle('active', isTarget);
+  });
+
+  const tabs = document.querySelector('.program-tabs');
+  if (tabs) {
+    const rect = tabs.getBoundingClientRect();
+    window.scrollTo({ top: window.scrollY + rect.bottom - 80, behavior: 'smooth' });
+  }
+
+  if (typeof connectScrollReveal === 'function') {
+    setTimeout(connectScrollReveal, 80);
+  }
+  if (typeof connectStatCounters === 'function') {
+    setTimeout(connectStatCounters, 80);
+  }
+}
+
 function showPage(id) {
   closeMobileNav();
 
+  if (pageTransitionLock) return false;
+
   const next = document.getElementById('page-' + id);
-  if (!next || pageTransitionLock) return false;
+  if (!next || !pageHasInDocumentContent(next)) {
+    const path = htmlPathForPageId(id);
+    if (path) window.location.href = path;
+    return false;
+  }
 
   const current = document.querySelector('.page.active');
   if (!current || current === next) return false;
 
   updateNav(id);
   window.scrollTo(0, 0);
+  if (id === 'faq') { setTimeout(initFaqV2, 50); }
 
   const motion = hasGsap() && !prefersReducedMotion();
 
@@ -682,6 +735,7 @@ function showPage(id) {
   }
 
   pageTransitionLock = true;
+  document.body.classList.add('is-page-transitioning');
   const gsap = window.gsap;
   const blocks = getPageContentBlocks(next);
   const mv = isMobileViewport();
@@ -695,6 +749,7 @@ function showPage(id) {
       gsap.set(next, { clearProps: 'opacity,transform,filter' });
       if (blocks.length) gsap.set(blocks, { clearProps: 'opacity,transform' });
       pageTransitionLock = false;
+      document.body.classList.remove('is-page-transitioning');
       refreshMotionForActivePage();
     },
   });
@@ -812,6 +867,10 @@ function initSpaTabNavigation() {
     if (a.hasAttribute('download')) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
+    // Stub pages (e.g. junior.html) ship empty #page-* shells; use real navigation.
+    const nextPageEl = document.getElementById('page-' + id);
+    if (!pageHasInDocumentContent(nextPageEl)) return;
+
     // Prevent full page reload and switch tabs smoothly
     e.preventDefault();
     e.stopPropagation();
@@ -827,7 +886,95 @@ function initSpaTabNavigation() {
   window.addEventListener('popstate', () => {
     const id = pageIdFromLocation();
     if (getActivePageId() === id) return;
+    const el = document.getElementById('page-' + id);
+    if (!pageHasInDocumentContent(el)) {
+      window.location.reload();
+      return;
+    }
     showPage(id);
+  });
+}
+
+/* ===== FAQ V2 — New accordion, search & category filter ===== */
+
+function toggleFaqV2(triggerBtn) {
+  const item = triggerBtn.closest('.faq-v2-item');
+  const body = item.querySelector('.faq-v2-body');
+  if (!item || !body) return;
+  const isOpen = item.classList.contains('is-open');
+  if (isOpen) {
+    item.classList.remove('is-open');
+    triggerBtn.setAttribute('aria-expanded', 'false');
+    if (hasGsap() && !prefersReducedMotion()) {
+      window.gsap.to(body, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.inOut',
+        onComplete: () => { body.hidden = true; window.gsap.set(body, { clearProps: 'height,opacity' }); }
+      });
+    } else { body.hidden = true; }
+  } else {
+    item.classList.add('is-open');
+    triggerBtn.setAttribute('aria-expanded', 'true');
+    body.hidden = false;
+    if (hasGsap() && !prefersReducedMotion()) {
+      const h = body.scrollHeight;
+      window.gsap.fromTo(body, { height: 0, opacity: 0 },
+        { height: h, opacity: 1, duration: 0.38, ease: 'power3.out',
+          onComplete: () => { body.style.height = 'auto'; window.gsap.set(body, { clearProps: 'opacity' }); }
+        }
+      );
+    }
+  }
+}
+
+function clearFaqSearch() {
+  const input = document.getElementById('faqSearchInput');
+  if (input) { input.value = ''; input.dispatchEvent(new Event('input')); }
+}
+
+function initFaqV2() {
+  const searchInput = document.getElementById('faqSearchInput');
+  const clearBtn = document.getElementById('faqSearchClear');
+  const noResults = document.getElementById('faqNoResults');
+  const catBtns = document.querySelectorAll('.faq-cat');
+  const items = document.querySelectorAll('.faq-v2-item');
+  if (!searchInput) return;
+  let activeCat = 'all';
+  function applyFilters() {
+    const query = searchInput.value.trim().toLowerCase();
+    if (clearBtn) clearBtn.hidden = query.length === 0;
+    let visible = 0;
+    items.forEach((item) => {
+      const qEl = item.querySelector('.faq-v2-q');
+      const bodyEl = item.querySelector('.faq-v2-content');
+      const cat = item.dataset.cat || 'all';
+      const catMatch = activeCat === 'all' || cat === activeCat;
+      const qText = qEl ? qEl.textContent.toLowerCase() : '';
+      const bodyText = bodyEl ? bodyEl.textContent.toLowerCase() : '';
+      const queryMatch = query === '' || qText.includes(query) || bodyText.includes(query);
+      const show = catMatch && queryMatch;
+      item.classList.toggle('faq-filtered-out', !show);
+      if (show) visible++;
+      if (qEl) {
+        const raw = qEl.textContent;
+        if (query) {
+          const esc = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          qEl.innerHTML = raw.replace(new RegExp('(' + esc + ')', 'gi'), '<mark>$1</mark>');
+        } else {
+          qEl.textContent = raw;
+        }
+      }
+    });
+    if (noResults) noResults.hidden = visible > 0;
+  }
+  searchInput.addEventListener('input', applyFilters);
+  if (clearBtn) clearBtn.addEventListener('click', () => { searchInput.value = ''; applyFilters(); searchInput.focus(); });
+  catBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      activeCat = btn.dataset.cat || 'all';
+      applyFilters();
+    });
   });
 }
 
@@ -1088,6 +1235,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   initMobileNav();
   initClubTabs();
+  initFaqV2();
   initSpaTabNavigation();
 
   const tabWrap = document.querySelector('.nav-pill-tabbar');
