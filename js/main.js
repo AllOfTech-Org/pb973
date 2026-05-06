@@ -862,6 +862,10 @@ function initSpaTabNavigation() {
     const id = pageIdFromHref(href);
     if (!id) return;
 
+    // Junior and FAQ live as standalone pages now; always hard-navigate so
+    // users never see older in-index placeholder sections first.
+    if (id === 'junior' || id === 'faq') return;
+
     // allow new tab / download / external behaviors
     if (a.target === '_blank') return;
     if (a.hasAttribute('download')) return;
