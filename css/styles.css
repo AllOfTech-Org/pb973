@@ -38,6 +38,29 @@ p, h1, h2, h3, h4, li, cite, figcaption {
   overflow-wrap: break-word;
 }
 
+/* Screen-reader-only utility — visible to assistive tech but not laid out. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyboard focus visibility (consistent across all interactive elements). */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+nav a:focus-visible,
+.nav-pill-links a:focus-visible {
+  outline-offset: 4px;
+}
+
 body.is-loading {
   overflow: hidden;
 }
@@ -47,7 +70,7 @@ body.is-page-transitioning {
   overflow: hidden;
 }
 
-body.is-loading #page-home > *:not(footer) {
+body.is-loading .page.active > *:not(footer) {
   opacity: 0;
 }
 

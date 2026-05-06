@@ -16,10 +16,6 @@ let pageTransitionLock = false;
 const revealObservers = [];
 const counterObservers = [];
 
-function isFinePointer() {
-  return window.matchMedia('(pointer: fine)').matches;
-}
-
 /** True mouse/trackpad desktop: custom cursor + magnetic — never phones/tablet breakpoints */
 function isDesktopPointerUX() {
   if (prefersReducedMotion()) return false;
@@ -457,44 +453,6 @@ function updateNav(id) {
 
 let mobileNavCloseTimer = 0;
 
-// #region agent log
-function __agentLogMobileNav(hypothesisId, location, message, data) {
-  fetch('http://127.0.0.1:7692/ingest/2e7ac764-9b73-44c8-a8a7-30c05662363a', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'bdf4ff' },
-    body: JSON.stringify({
-      sessionId: 'bdf4ff',
-      hypothesisId,
-      location,
-      message,
-      data: data || {},
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-}
-
-function __snapLinks(links, idxs) {
-  const out = {};
-  idxs.forEach((i) => {
-    const el = links[i];
-    if (!el) {
-      out['i' + i] = null;
-      return;
-    }
-    const cs = getComputedStyle(el);
-    const r = el.getBoundingClientRect();
-    out['i' + i] = {
-      opacity: cs.opacity,
-      visibility: cs.visibility,
-      display: cs.display,
-      rectH: Math.round(r.height),
-      rectW: Math.round(r.width),
-    };
-  });
-  return out;
-}
-// #endregion
-
 function closeMobileNav() {
   const drawer = document.getElementById('mobileNavDrawer');
   const backdrop = document.getElementById('mobileNavBackdrop');
@@ -535,22 +493,7 @@ function animateMobileNavOpen() {
   const joinBtn = document.querySelector('.btn-join-mobile-nav');
   if (!links.length) return;
 
-  // #region agent log
-  __agentLogMobileNav('B', 'main.js:animateMobileNavOpen:entry', 'animateMobileNavOpen entry', {
-    linkCount: links.length,
-    hasGsap: hasGsap(),
-    prefersReducedMotion: prefersReducedMotion(),
-    labels: [...links].map((a) => a.textContent?.trim()),
-  });
-  // #endregion
-
   if (prefersReducedMotion() || !hasGsap()) {
-    // #region agent log
-    __agentLogMobileNav('E', 'main.js:animateMobileNavOpen:early', 'skipped GSAP tween path', {
-      prefersReducedMotion: prefersReducedMotion(),
-      hasGsap: hasGsap(),
-    });
-    // #endregion
     if (hasGsap()) {
       const gsap = window.gsap;
       gsap.killTweensOf([...links, joinBtn].filter(Boolean));
@@ -566,9 +509,6 @@ function animateMobileNavOpen() {
    * Timeline onComplete runs once after link + button motion (GSAP 3 has no stagger onCompleteAll). */
   const navOpenTl = gsap.timeline({
     onComplete: () => {
-      // #region agent log
-      __agentLogMobileNav('A', 'main.js:animateMobileNavOpen:timelineDone', 'mobile nav open timeline done', __snapLinks(links, [0, 1, 6]));
-      // #endregion
       gsap.set(links, { clearProps: 'transform' });
       if (joinBtn) gsap.set(joinBtn, { clearProps: 'transform' });
     },
@@ -587,31 +527,6 @@ function animateMobileNavOpen() {
       0.06 + links.length * 0.065
     );
   }
-
-  // #region agent log
-  requestAnimationFrame(() => {
-    __agentLogMobileNav('A', 'main.js:animateMobileNavOpen:afterTweenStart', 'after timeline started', __snapLinks(links, [0, 1, 6]));
-  });
-  // #endregion
-
-  // #region agent log
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      __agentLogMobileNav('C', 'main.js:animateMobileNavOpen:rAF2', '2 frames after tween start', __snapLinks(links, [0, 1, 6]));
-      const navEl = document.querySelector('.mobile-nav-links');
-      if (navEl) {
-        const cs = getComputedStyle(navEl);
-        const r = navEl.getBoundingClientRect();
-        __agentLogMobileNav('C', 'main.js:animateMobileNavOpen:navBox', 'mobile-nav-links box', {
-          clientHeight: navEl.clientHeight,
-          scrollHeight: navEl.scrollHeight,
-          overflowY: cs.overflowY,
-          rectH: Math.round(r.height),
-        });
-      }
-    });
-  });
-  // #endregion
 }
 
 function openMobileNav() {
@@ -620,15 +535,6 @@ function openMobileNav() {
   const toggle = document.getElementById('navMenuToggle');
   if (!drawer || !backdrop || !toggle) return;
   const toggleDisp = window.getComputedStyle(toggle).display;
-  // #region agent log
-  __agentLogMobileNav('D', 'main.js:openMobileNav', 'openMobileNav called', {
-    toggleDisplay: toggleDisp,
-    innerWidth: typeof innerWidth !== 'undefined' ? innerWidth : null,
-    isMobileViewport: isMobileViewport(),
-    drawerHidden: drawer.hidden,
-    linkCountPre: document.querySelectorAll('#mobileNavDrawer .mobile-nav-link').length,
-  });
-  // #endregion
   if (toggleDisp === 'none') return;
 
   clearTimeout(mobileNavCloseTimer);
@@ -733,6 +639,16 @@ function showPage(id) {
 
   const current = document.querySelector('.page.active');
   if (!current || current === next) return false;
+
+  // Keep the URL bar in sync with the active page so refresh/back-forward work.
+  // Only push state when called outside the click interceptor (the interceptor
+  // already pushes its own state and pageIdFromLocation will already match).
+  try {
+    if (pageIdFromLocation() !== id) {
+      const path = htmlPathForPageId(id) || (id === 'home' ? 'index.html' : id + '.html');
+      history.pushState({ page: id }, '', path);
+    }
+  } catch (err) {}
 
   updateNav(id);
   window.scrollTo(0, 0);
@@ -884,14 +800,12 @@ function initSpaTabNavigation() {
     const nextPageEl = document.getElementById('page-' + id);
     if (!pageHasInDocumentContent(nextPageEl)) return;
 
-    // Prevent full page reload and switch tabs smoothly
+    // Prevent full page reload and switch tabs smoothly.
+    // showPage() handles history.pushState internally, so no need to do it here.
     e.preventDefault();
     e.stopPropagation();
     if (getActivePageId() === id) return;
     showPage(id);
-    try {
-      history.pushState({ page: id }, '', href);
-    } catch (err) {}
   };
 
   document.addEventListener('click', onClick, true);
@@ -991,138 +905,6 @@ function initFaqV2() {
   });
 }
 
-function toggleFaq(el) {
-  const exchange = el.closest('.faq-chat-exchange');
-  const isChat = !!exchange;
-  const answer = isChat ? exchange.querySelector('.faq-a') : el.nextElementSibling;
-  const icon = el.querySelector('.faq-icon');
-  if (!answer) return;
-
-  const motion = hasGsap() && !prefersReducedMotion();
-  const collapsed = answer.dataset.collapsed === '1';
-
-  const setExpanded = (open) => {
-    if (el.hasAttribute('aria-expanded')) {
-      el.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    const item = el.closest('.faq-item');
-    if (item) item.classList.toggle('is-open', open);
-  };
-
-  const setIcon = (open) => {
-    if (!icon) return;
-    icon.textContent = open ? '\u2227' : '\u2228';
-  };
-
-  if (!motion) {
-    if (!collapsed) {
-      answer.style.display = 'none';
-      answer.dataset.collapsed = '1';
-      setIcon(false);
-      setExpanded(false);
-    } else {
-      answer.style.display = 'block';
-      answer.dataset.collapsed = '0';
-      setIcon(true);
-      setExpanded(true);
-    }
-    return;
-  }
-
-  const gsap = window.gsap;
-
-  if (!collapsed) {
-    const h = answer.scrollHeight;
-    answer.style.overflow = 'hidden';
-    if (isChat) {
-      gsap.fromTo(
-        answer,
-        { height: h, opacity: 1, scale: 1 },
-        {
-          height: 0,
-          opacity: 0,
-          scale: 0.98,
-          duration: 0.36,
-          ease: 'power2.inOut',
-          transformOrigin: 'top left',
-          onComplete: () => {
-            answer.dataset.collapsed = '1';
-            answer.style.display = 'none';
-            answer.style.overflow = '';
-            answer.style.height = '';
-            gsap.set(answer, { clearProps: 'opacity,scale' });
-            setIcon(false);
-            setExpanded(false);
-          },
-        }
-      );
-    } else {
-      gsap.fromTo(
-        answer,
-        { height: h, opacity: 1 },
-        {
-          height: 0,
-          opacity: 0,
-          duration: 0.38,
-          ease: 'power2.inOut',
-          onComplete: () => {
-            answer.dataset.collapsed = '1';
-            answer.style.display = 'none';
-            answer.style.overflow = '';
-            answer.style.height = '';
-            gsap.set(answer, { clearProps: 'opacity' });
-            setIcon(false);
-            setExpanded(false);
-          },
-        }
-      );
-    }
-  } else {
-    answer.style.display = 'block';
-    answer.style.overflow = 'hidden';
-    answer.dataset.collapsed = '0';
-    setIcon(true);
-    setExpanded(true);
-    const targetH = answer.scrollHeight;
-    if (isChat) {
-      gsap.fromTo(
-        answer,
-        { height: 0, opacity: 0, scale: 0.97, y: 8 },
-        {
-          height: targetH,
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.48,
-          ease: 'power3.out',
-          transformOrigin: 'top left',
-          onComplete: () => {
-            answer.style.height = '';
-            answer.style.overflow = '';
-            gsap.set(answer, { clearProps: 'opacity,scale,y' });
-          },
-        }
-      );
-    } else {
-      gsap.fromTo(
-        answer,
-        { height: 0, opacity: 0 },
-        {
-          height: targetH,
-          opacity: 1,
-          duration: 0.42,
-          ease: 'power2.out',
-          onComplete: () => {
-            answer.style.height = '';
-            answer.style.overflow = '';
-            gsap.set(answer, { clearProps: 'opacity' });
-          },
-        }
-      );
-    }
-  }
-}
-
 function removeLoader() {
   const loader = document.getElementById('site-loader');
   if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
@@ -1141,7 +923,9 @@ function getNavType() {
 function runIntro() {
   const motion = hasGsap() && !prefersReducedMotion();
   const loader = document.getElementById('site-loader');
-  const home = document.getElementById('page-home');
+  // Animate whichever page is actually active on this load (home, about, etc.)
+  // so users landing directly on a sub-page still see the intro reveal.
+  const activePage = document.querySelector('.page.active') || document.getElementById('page-home');
 
   if (!motion || !loader) {
     removeLoader();
@@ -1149,7 +933,7 @@ function runIntro() {
   }
 
   const gsap = window.gsap;
-  const blocks = home ? getPageContentBlocks(home) : [];
+  const blocks = activePage ? getPageContentBlocks(activePage) : [];
   const mv = isMobileViewport();
 
   if (blocks.length) gsap.set(blocks, { opacity: 0, y: mv ? 12 : 28 });
@@ -1205,15 +989,6 @@ function runIntro() {
       '-=0.4'
     );
 }
-
-document.querySelectorAll('.faq-a').forEach((a) => {
-  if (a.closest('.faq-chat-exchange')) {
-    a.dataset.collapsed = '1';
-    a.style.display = 'none';
-  } else {
-    a.dataset.collapsed = '0';
-  }
-});
 
 let resizeTimer;
 window.addEventListener('resize', () => {

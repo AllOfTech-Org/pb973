@@ -4,9 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PB(973) - Play The Code</title>
-<meta name="description" content="PB(973) Play The Code — indoor pickleball and social club in Flanders, NJ.">
+<meta name="description" content="PB(973) Play The Code — indoor pickleball and social club in Flanders, NJ. Six championship courts, players lounge, junior programs, Mah Jongg, billiards.">
 <meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://pb973.com/index.html">
+<link rel="icon" type="image/png" href="assets/images/Logo.png">
+<link rel="apple-touch-icon" href="assets/images/Logo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PB(973) Play The Code">
+<meta property="og:title" content="PB(973) — Play The Code | Premier Indoor Pickleball Club, Flanders NJ">
+<meta property="og:description" content="An exclusive, upscale pickleball sanctuary with championship courts, concierge booking, tailored programs, and a vibrant social community in Flanders, NJ.">
+<meta property="og:url" content="https://pb973.com/index.html">
+<meta property="og:image" content="assets/images/Championship%20Courts%20View.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PB(973) — Play The Code">
+<meta name="twitter:description" content="Premier indoor pickleball and social club in Flanders, NJ. Coming June 2026.">
+<meta name="twitter:image" content="assets/images/Championship%20Courts%20View.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/styles.css">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -74,7 +89,7 @@
     </button>
     <a class="nav-icon" href="#" title="Facebook" aria-label="Facebook" onclick="return false;"><img src="assets/icons/facebook.svg" alt="" class="nav-social-img" width="20" height="20" decoding="async"></a>
     <a class="nav-icon" href="#" title="Instagram" aria-label="Instagram" onclick="return false;"><img src="assets/icons/instagram.svg" alt="" class="nav-social-img" width="20" height="20" decoding="async"></a>
-    <button type="button" class="btn-join btn-join-nav" onclick="showPage('membership')">Join Email List</button>
+    <button type="button" class="btn-join btn-join-nav" onclick="showPage('contact')">Join Email List</button>
   </div>
 </nav>
 <div id="mobileNavBackdrop" class="mobile-nav-backdrop" hidden aria-hidden="true"></div>
@@ -97,7 +112,7 @@
     </nav>
     <div class="mobile-nav-spacer" aria-hidden="true"></div>
     <div class="mobile-nav-drawer-footer">
-      <button type="button" class="btn-join-mobile-nav" onclick="showPage('membership')">Join Email List</button>
+      <button type="button" class="btn-join-mobile-nav" onclick="showPage('contact')">Join Email List</button>
     </div>
   </div>
 </div>
@@ -128,8 +143,8 @@
         <div class="line2">JUNE 2026!</div>
       </div>
       <div class="hero-btns">
-        <a href="#" class="btn-outline" onclick="showPage('about')">About Us</a>
-        <a href="#" class="btn-solid" onclick="showPage('membership')">View Memberships</a>
+        <a href="about.html" class="btn-outline" onclick="showPage('about')">About Us</a>
+        <a href="membership.html" class="btn-solid" onclick="showPage('membership')">View Memberships</a>
       </div>
     </div>
     <div class="hero-media">
@@ -251,8 +266,8 @@
         <cite>Club vision · North Jersey</cite>
       </blockquote>
       <div class="mini-cta-row">
-        <a href="#" class="btn-email" onclick="showPage('membership'); return false;">✉ Join The List</a>
-        <a href="#" class="btn-ghost" onclick="showPage('faq'); return false;">Read FAQ's</a>
+        <a href="membership.html" class="btn-email" onclick="showPage('membership'); return false;">✉ Join The List</a>
+        <a href="faq.html" class="btn-ghost" onclick="showPage('faq'); return false;">Read FAQ's</a>
       </div>
     </div>
   </section>
@@ -261,7 +276,7 @@
     <div class="reveal-section" data-reveal="up">
     <h2 class="section-heading">Our Mailing List</h2>
     <p>Be the first to know about membership openings, events, and exclusive offers.</p>
-    <a href="#" class="btn-email">✉ Join Our Email List For Updates</a>
+    <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;">✉ Join Our Email List For Updates</a>
     <div class="social-row">
       <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="" width="22" height="22" decoding="async"></a>
       <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="" width="22" height="22" decoding="async"></a>
@@ -274,8 +289,8 @@
     <div class="footer-cta-strip">
       <p>Ready when you are—lock in updates, tours, and membership windows.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('membership'); return false;">Memberships</a>
-        <a href="#" class="btn-solid" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="membership.html" class="btn-outline" onclick="showPage('membership'); return false;">Memberships</a>
+        <a href="contact.html" class="btn-solid" onclick="showPage('contact'); return false;">Contact</a>
       </div>
     </div>
     <div>
@@ -368,8 +383,8 @@
         <cite>Community · Flanders, NJ</cite>
       </blockquote>
       <div class="mini-cta-row">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact the team</a>
-        <a href="#" class="btn-solid" onclick="showPage('membership'); return false;">View memberships</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact the team</a>
+        <a href="membership.html" class="btn-solid" onclick="showPage('membership'); return false;">View memberships</a>
       </div>
     </div>
   </section>
@@ -377,8 +392,8 @@
     <div class="footer-cta-strip">
       <p>Questions about partnerships, programming, or press? We respond quickly.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="#" class="btn-solid" onclick="showPage('membership'); return false;">Memberships</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="membership.html" class="btn-solid" onclick="showPage('membership'); return false;">Memberships</a>
       </div>
     </div>
     <div>
@@ -412,47 +427,49 @@
   </div>
   <div class="contact-form">
     <div class="reveal-section" data-reveal="left">
+    <form action="mailto:info@pb973.com" method="post" enctype="text/plain" novalidate aria-label="Contact PB(973)">
     <div class="form-row">
       <div class="form-group">
-        <label>First Name <span>*</span></label>
-        <input type="text" placeholder="First">
+        <label for="cf-firstname">First Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+        <input id="cf-firstname" name="firstName" type="text" autocomplete="given-name" placeholder="First" required aria-required="true">
       </div>
       <div class="form-group">
-        <label>Last Name <span>*</span></label>
-        <input type="text" placeholder="Last">
+        <label for="cf-lastname">Last Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+        <input id="cf-lastname" name="lastName" type="text" autocomplete="family-name" placeholder="Last" required aria-required="true">
       </div>
     </div>
     <div class="form-group">
-      <label>Email <span>*</span></label>
-      <input type="email" placeholder="your@email.com">
+      <label for="cf-email">Email <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required aria-required="true">
     </div>
     <div class="form-address-label">Mailing Address</div>
     <div class="form-group">
-      <label>Street Address</label>
-      <input type="text" placeholder="123 Main Street">
+      <label for="cf-street">Street Address</label>
+      <input id="cf-street" name="street" type="text" autocomplete="street-address" placeholder="123 Main Street">
     </div>
     <div class="form-group">
-      <label>City</label>
-      <input type="text" placeholder="City">
+      <label for="cf-city">City</label>
+      <input id="cf-city" name="city" type="text" autocomplete="address-level2" placeholder="City">
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>State</label>
-        <select>
-          <option>Select state</option>
-          <option>NJ</option><option>NY</option><option>PA</option><option>CT</option>
+        <label for="cf-state">State</label>
+        <select id="cf-state" name="state" autocomplete="address-level1">
+          <option value="">Select state</option>
+          <option value="NJ">NJ</option><option value="NY">NY</option><option value="PA">PA</option><option value="CT">CT</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Zip Code</label>
-        <input type="text" placeholder="12345">
+        <label for="cf-zip">Zip Code</label>
+        <input id="cf-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" autocomplete="postal-code" placeholder="12345">
       </div>
     </div>
     <div class="form-group">
-      <label>Question Or Comment?</label>
-      <textarea placeholder="Your message..."></textarea>
+      <label for="cf-message">Question Or Comment?</label>
+      <textarea id="cf-message" name="message" rows="5" placeholder="Your message..."></textarea>
     </div>
-    <button class="btn-submit">Submit</button>
+    <button type="submit" class="btn-submit">Submit</button>
+    </form>
     <div class="contact-email-line">✉ <a href="mailto:info@pb973.com">info@pb973.com</a></div>
     </div>
   </div>
@@ -481,7 +498,7 @@
       </blockquote>
       <div class="mini-cta-row">
         <a href="tel:9739737297" class="btn-email">Call (973) 973-7297</a>
-        <a href="#" class="btn-ghost" onclick="showPage('faq'); return false;">FAQ's</a>
+        <a href="faq.html" class="btn-ghost" onclick="showPage('faq'); return false;">FAQ's</a>
       </div>
     </div>
   </section>
@@ -489,8 +506,8 @@
     <div class="footer-cta-strip">
       <p>Prefer the phone? Our team answers during business hours.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('membership'); return false;">Memberships</a>
-        <a href="#" class="btn-solid" onclick="showPage('home'); return false;">Back home</a>
+        <a href="membership.html" class="btn-outline" onclick="showPage('membership'); return false;">Memberships</a>
+        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Back home</a>
       </div>
     </div>
     <div>
@@ -758,7 +775,7 @@
             <div style="font-size:12px;color:#777;line-height:1.6;margin-bottom:4px;">📞 973-973-7297</div>
             <div style="font-size:12px;color:#777;line-height:1.6;">Year-round program — up to 5 sessions per year</div>
 
-            <a href="#" class="dd-register-btn" onclick="showPage('contact'); return false;">
+            <a href="contact.html" class="dd-register-btn" onclick="showPage('contact'); return false;">
               Register or Ask About Dinkin Dinos →
             </a>
 
@@ -845,8 +862,8 @@
           </div>
 
           <div style="display:flex;gap:16px;flex-wrap:wrap;">
-            <a href="#" class="btn-email" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">✉ Register at (973) 973-7297</a>
-            <a href="#" class="btn-ghost" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">Ask About CE</a>
+            <a href="contact.html" class="btn-email" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">✉ Register at (973) 973-7297</a>
+            <a href="contact.html" class="btn-ghost" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">Ask About CE</a>
           </div>
         </div>
 
@@ -1000,7 +1017,7 @@
             <a href="tel:9739737297" class="ce-register-btn">
               Call (973) 973-7297 to Register →
             </a>
-            <a href="#" class="ce-register-btn" style="background:transparent;color:#aadd00;border:1px solid rgba(170,221,0,0.35);margin-top:10px;" onclick="showPage('contact'); return false;">
+            <a href="contact.html" class="ce-register-btn" style="background:transparent;color:#aadd00;border:1px solid rgba(170,221,0,0.35);margin-top:10px;" onclick="showPage('contact'); return false;">
               Send a Message Instead →
             </a>
           </div>
@@ -1056,8 +1073,8 @@
       </blockquote>
 
       <div class="mini-cta-row">
-        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Ask About Junior Programs</a>
-        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
+        <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;">✉ Ask About Junior Programs</a>
+        <a href="membership.html" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
       </div>
     </div>
   </section>
@@ -1067,8 +1084,8 @@
     <div class="footer-cta-strip">
       <p>Junior Academy updates ship with the main member list — stay on both.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="#" class="btn-solid" onclick="showPage('membership'); return false;">Join the list</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="membership.html" class="btn-solid" onclick="showPage('membership'); return false;">Join the list</a>
       </div>
     </div>
     <div>
@@ -1304,22 +1321,22 @@
         <cite>PB(973) member success</cite>
       </blockquote>
       <div class="mini-cta-row">
-        <a href="#" class="btn-outline" onclick="showPage('faq'); return false;">FAQ's</a>
-        <a href="#" class="btn-solid" onclick="showPage('contact'); return false;">Talk to us</a>
+        <a href="faq.html" class="btn-outline" onclick="showPage('faq'); return false;">FAQ's</a>
+        <a href="contact.html" class="btn-solid" onclick="showPage('contact'); return false;">Talk to us</a>
       </div>
     </div>
   </section>
 
   <div class="membership-cta">
-    <a href="#" class="btn-email" style="background:var(--green);color:var(--black);padding:14px 40px;font-size:15px;font-weight:800;border-radius:50px;text-decoration:none;display:inline-block;">Join The List</a>
+    <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;" style="background:var(--green);color:var(--black);padding:14px 40px;font-size:15px;font-weight:800;border-radius:50px;text-decoration:none;display:inline-block;">Join The List</a>
   </div>
 
   <footer>
     <div class="footer-cta-strip">
       <p>Lock your spot on the list—founders may be full, but the club is just getting started.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="#" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
       </div>
     </div>
     <div>
@@ -1403,7 +1420,7 @@
       </blockquote>
       <div class="mini-cta-row">
         <a href="mailto:info@pb973.com" class="btn-email">✉ info@pb973.com</a>
-        <a href="#" class="btn-ghost" onclick="showPage('contact'); return false;">Contact form</a>
+        <a href="contact.html" class="btn-ghost" onclick="showPage('contact'); return false;">Contact form</a>
       </div>
     </div>
   </section>
@@ -1412,8 +1429,8 @@
     <div class="footer-cta-strip">
       <p>Booking a shoot or need a fact sheet? Start with email—we reply fast.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="#" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
       </div>
     </div>
     <div>
@@ -1540,7 +1557,7 @@
         </button>
         <div class="faq-v2-body" hidden>
           <div class="faq-v2-content">
-            <p>No — coaches not on the official PB(973) coaching roster are not permitted to charge for lessons on our courts. If you're interested in coaching here, please <a href="#" onclick="showPage('contact'); return false;" class="faq-v2-link">contact us</a> to discuss a partnership.</p>
+            <p>No — coaches not on the official PB(973) coaching roster are not permitted to charge for lessons on our courts. If you're interested in coaching here, please <a href="contact.html" onclick="showPage('contact'); return false;" class="faq-v2-link">contact us</a> to discuss a partnership.</p>
           </div>
         </div>
       </div>
@@ -1612,8 +1629,8 @@
       <h2 class="faq-still-heading">We're one message away</h2>
       <p class="faq-still-sub">Can't find what you're looking for? Our team is happy to help — we update this page as the community grows.</p>
       <div class="faq-still-actions">
-        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact Us</a>
-        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
+        <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact Us</a>
+        <a href="membership.html" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
       </div>
     </div>
   </section>
@@ -1642,8 +1659,8 @@
         <cite>PB(973) Member Services</cite>
       </blockquote>
       <div class="mini-cta-row">
-        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact us</a>
-        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">Memberships</a>
+        <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact us</a>
+        <a href="membership.html" class="btn-ghost" onclick="showPage('membership'); return false;">Memberships</a>
       </div>
     </div>
   </section>
@@ -1652,8 +1669,8 @@
     <div class="footer-cta-strip">
       <p>Bookmark this page — we update answers as opening week approaches.</p>
       <div class="footer-cta-actions">
-        <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="#" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
+        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
       </div>
     </div>
     <div>
