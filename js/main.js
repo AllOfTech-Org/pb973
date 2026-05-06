@@ -317,7 +317,8 @@ function initHeroParallax() {
 /**
  * Positions the sliding pill behind the active nav tab (main tab section).
  */
-function moveNavTabIndicator() {
+function moveNavTabIndicator(opts) {
+  const immediate = !!(opts && opts.immediate);
   const tabBar = document.querySelector('.nav-pill-tabbar');
   if (tabBar && window.getComputedStyle(tabBar).display === 'none') return;
 
@@ -327,6 +328,7 @@ function moveNavTabIndicator() {
   if (!wrap || !ind || !active) return;
 
   const wrapRect = wrap.getBoundingClientRect();
+  if (wrapRect.width < 4 || wrapRect.height < 4) return;
   const aRect = active.getBoundingClientRect();
   /* .nav-pill is the positioning context — use viewport deltas (no scrollLeft; pill moves with scroll parent). */
   const left = aRect.left - wrapRect.left;
@@ -334,16 +336,27 @@ function moveNavTabIndicator() {
   const w = aRect.width;
   const h = aRect.height;
 
+  // On full page loads (junior.html / membership.html / faq.html), the indicator starts at 0x0.
+  // Animating from that default looks like the capsule drops in from above.
+  // First placement is instant; later moves are animated.
+  const firstPlace = ind.dataset.pb973Ready !== '1';
+  if (firstPlace) ind.dataset.pb973Ready = '1';
+
   if (hasGsap() && !prefersReducedMotion()) {
-    window.gsap.to(ind, {
-      left,
-      top,
-      width: w,
-      height: h,
-      duration: 0.52,
-      ease: 'power3.out',
-      overwrite: 'auto',
-    });
+    const gsap = window.gsap;
+    if (immediate || firstPlace) {
+      gsap.set(ind, { left, top, width: w, height: h });
+    } else {
+      gsap.to(ind, {
+        left,
+        top,
+        width: w,
+        height: h,
+        duration: 0.52,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    }
   } else {
     ind.style.transition = 'left 0.45s ease, top 0.45s ease, width 0.45s ease, height 0.45s ease';
     ind.style.left = `${left}px`;
@@ -862,10 +875,6 @@ function initSpaTabNavigation() {
     const id = pageIdFromHref(href);
     if (!id) return;
 
-    // Junior and FAQ live as standalone pages now; always hard-navigate so
-    // users never see older in-index placeholder sections first.
-    if (id === 'junior' || id === 'faq') return;
-
     // allow new tab / download / external behaviors
     if (a.target === '_blank') return;
     if (a.hasAttribute('download')) return;
@@ -1224,6 +1233,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const initialEl = document.getElementById('page-' + initialId);
   document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
   if (initialEl) initialEl.classList.add('active');
+  requestAnimationFrame(() => moveNavTabIndicator({ immediate: true }));
 
   // Home hero "pop" only on the very first entry (not when switching tabs later).
   if (initialId === 'home') {

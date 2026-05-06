@@ -506,96 +506,566 @@
   </footer>
 </div>
 
-<!-- ===== JUNIOR PROGRAM PAGE ===== -->
+<!-- ===== JUNIOR PAGE ===== -->
 <div id="page-junior" class="page">
-  <div class="page-header"><h1>Junior Program</h1></div>
-  <div class="junior-coming">
-    <div class="badge-coming">Coming Soon!</div>
-    <h2>The PB973 Junior Academy</h2>
-  </div>
-  <div class="content-band content-band--alt">
-    <div class="content-band-inner reveal-section" data-reveal="up">
-      <p class="section-kicker">Youth pathway</p>
-      <h2 class="section-heading">Structured progress, playful energy</h2>
-      <p style="color:#aaa;font-size:15px;line-height:1.7;max-width:620px;margin:0 auto;">The Junior Academy pairs PB(973) court culture with trusted partner programming—so young athletes learn fundamentals, respect, and love for the game alongside peers.</p>
+
+  <!-- Hero: Program Selector -->
+  <div class="junior-hero">
+    <div class="junior-hero-bg" aria-hidden="true"></div>
+    <p class="junior-hero-kicker">PB(973) · Junior Development</p>
+    <h1 class="junior-hero-title">Two Elite Programs.<br>One Incredible Facility.</h1>
+    <p class="junior-hero-sub">Choose the right path for your young player — from first-time fun to competitive excellence, we've partnered with the best junior coaches in North Jersey.</p>
+
+    <!-- Program Switch Tabs -->
+    <div class="program-tabs" role="tablist" aria-label="Select junior program">
+      <button
+        class="program-tab-btn active"
+        id="tab-dinkin"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-dinkin"
+        onclick="switchProgram('dinkin')"
+      >
+        <span class="tab-emoji">🦕</span>
+        Dinkin Dinos <span style="font-size:10px;font-weight:600;opacity:0.7;margin-left:4px;">Ages 5–9</span>
+      </button>
+      <button
+        class="program-tab-btn"
+        id="tab-ce"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-ce"
+        onclick="switchProgram('ce')"
+      >
+        <span class="tab-emoji">🎯</span>
+        Competitive Edge <span style="font-size:10px;font-weight:600;opacity:0.7;margin-left:4px;">All Ages</span>
+      </button>
     </div>
   </div>
-  <div class="junior-logos">
-    <div class="junior-logo-block reveal-section" data-reveal="left">
-      <!-- Dinkin Dinos logo representation -->
-      <div style="width:140px;height:140px;background:#f5e000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;">
-        <div style="font-family:'Montserrat',sans-serif;font-size:52px;font-weight:900;color:#3a7a10;line-height:1;">DD</div>
-        <div style="position:absolute;bottom:-4px;right:-4px;width:40px;height:40px;background:#3a7a10;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">🦕</div>
+
+  <!-- ============================
+       DINKIN DINOS PANEL
+       ============================ -->
+  <div id="panel-dinkin" class="program-panel active" role="tabpanel" aria-labelledby="tab-dinkin">
+
+    <!-- Hero -->
+    <div class="dd-hero">
+      <div class="dd-hero-inner">
+        <!-- Left: Info -->
+        <div class="reveal-section" data-reveal="left">
+          <div class="dd-logo-badge">
+            <div class="dd-logo-circle">
+              <span class="dd-initials">DD</span>
+              <span class="dd-dino">🦕</span>
+            </div>
+            <div class="dd-logo-text-block">
+              <div class="dd-name">DINKIN DINOS</div>
+              <div class="dd-sub">9U Pickleball Program · PB(973)</div>
+            </div>
+          </div>
+
+          <h2 class="dd-tagline">Where Little Dinks Make<br><em>Big Dinosaurs Roar!</em></h2>
+
+          <p class="dd-hero-desc">Dinkin Dinos is an age-appropriate introduction to pickleball for kids ages 5–9. We focus on fun, safety, and fundamentals — learning how to hold the paddle, get into ready position, swing smoothly, and send the ball to simple targets on the court.</p>
+
+          <div class="dd-hero-pills">
+            <span class="dd-pill">Ages 5–9</span>
+            <span class="dd-pill">8-Week Sessions</span>
+            <span class="dd-pill">Once Per Week</span>
+            <span class="dd-pill">60 Minutes</span>
+            <span class="dd-pill">Badge System</span>
+            <span class="dd-pill">Ice Cream Party 🍦</span>
+          </div>
+
+          <div class="dd-cost-box">
+            <div class="dd-cost-num">$336</div>
+            <div class="dd-cost-detail">
+              <strong>Per 8-Week Session</strong>
+              Sessions begin September 2026<br>Schedule to be provided
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Character Cards -->
+        <div class="reveal-section" data-reveal="right">
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#3a7a10;margin-bottom:14px;">Meet The Dino Coaches</p>
+          <div class="dd-char-grid">
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🦖</div>
+              <div class="dd-char-name">Rally Rex</div>
+              <div class="dd-char-role">Power &amp; Confidence</div>
+              <div class="dd-char-desc">Loves big serves and strong swings. Helps kids be brave with their shots.</div>
+            </div>
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🦕</div>
+              <div class="dd-char-name">Steggi</div>
+              <div class="dd-char-role">Control &amp; Focus</div>
+              <div class="dd-char-desc">Teaches soft dinks, smart targets, and patient play at the kitchen.</div>
+            </div>
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🦜</div>
+              <div class="dd-char-name">Tria</div>
+              <div class="dd-char-role">Teamwork &amp; Kindness</div>
+              <div class="dd-char-desc">The Teamwork Dino, makes sure everyone feels included and encouraged.</div>
+            </div>
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🦋</div>
+              <div class="dd-char-name">Ptera</div>
+              <div class="dd-char-role">Movement &amp; Hustle</div>
+              <div class="dd-char-desc">Gets kids moving fast — quickness, footwork, and court positioning.</div>
+            </div>
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🐊</div>
+              <div class="dd-char-name">Coach Spike</div>
+              <div class="dd-char-role">Head Coach &amp; Safety</div>
+              <div class="dd-char-desc">Keeps every session safe, structured, and fun — guiding kids and dinos alike.</div>
+            </div>
+            <div class="dd-char-card">
+              <div class="dd-char-emoji">🐶</div>
+              <div class="dd-char-name">Pickles the Pup</div>
+              <div class="dd-char-role">Fun &amp; Fair Play</div>
+              <div class="dd-char-desc">Loves fair play, water breaks, and celebrating every good shot!</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="dinkin-text1">DINKIN DINOS</div>
-      <div class="dinkin-text2">DINKIN<br>DINOS</div>
     </div>
 
-    <div class="comp-edge-logo reveal-section" data-reveal="right">
-      <div style="text-align:center;padding:8px 0;">
-        <div style="display:inline-flex;align-items:center;gap:8px;">
-          <div style="width:50px;height:50px;border-radius:50%;border:4px solid #aadd00;display:flex;align-items:center;justify-content:center;">
-            <div style="width:20px;height:20px;border-radius:50%;background:#aadd00;"></div>
+    <!-- Dino Levels & Stripes -->
+    <div class="dd-levels-section">
+      <span class="section-label">Progression System</span>
+      <h2>Dino Levels &amp; Stripes</h2>
+      <p class="sub">Players start as a Hatchling White and work their way up through the ranks. Each 8-week session gives kids a chance to earn stripes, level up, and collect DINO BADGES. Every child receives a badge holder upon registration.</p>
+
+      <div class="dino-levels-track">
+
+        <div class="dino-level-row">
+          <div class="level-dot white">🥚</div>
+          <div class="dino-level-info">
+            <div class="dino-level-name white">Hatchling White</div>
+            <div class="dino-level-label">Beginner Level</div>
+            <div class="dino-level-desc">First time on court, learning grip, ready position, backhand and a basic underhand serve.</div>
+            <div class="dino-stripes">
+              <div class="dino-stripe-row"><span class="stripe-dot" style="background:#e0e0e0;"></span>Rally Rex Stripe — Effort and bravery with serves and swings</div>
+              <div class="dino-stripe-row"><span class="stripe-dot" style="background:#b0b0b0;"></span>Steggi Stripe — Control and focus with dinks and placement</div>
+              <div class="dino-stripe-row"><span class="stripe-dot" style="background:#999;"></span>Ptera Stripe — Hustling and always ready to move their feet</div>
+            </div>
           </div>
-          <div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#222;letter-spacing:1px;">COMPETITIVE<strong>EDGE</strong></div>
-            <div style="font-size:11px;color:#666;letter-spacing:1px;">Pickleball Academy</div>
+        </div>
+
+        <div class="dino-level-row">
+          <div class="level-dot green">🦖</div>
+          <div class="dino-level-info">
+            <div class="dino-level-name green">Raptor Green</div>
+            <div class="dino-level-label">Rally &amp; Movement Level</div>
+            <div class="dino-level-desc">Starting to rally 3–5 balls, learning forehand/backhand and moving to the ball.</div>
+          </div>
+        </div>
+
+        <div class="dino-level-row">
+          <div class="level-dot blue">🦕</div>
+          <div class="dino-level-info">
+            <div class="dino-level-name blue">Triceratops Blue</div>
+            <div class="dino-level-label">Control &amp; Gameplay Level</div>
+            <div class="dino-level-desc">Working on dinks at the kitchen, simple targets, and short games to 5.</div>
+          </div>
+        </div>
+
+        <div class="dino-level-row">
+          <div class="level-dot gold">⭐</div>
+          <div class="dino-level-info">
+            <div class="dino-level-name gold">T-Rex Gold</div>
+            <div class="dino-level-label">Game-Ready All-Star Level</div>
+            <div class="dino-level-desc">Can serve, return, rally, understand basic scoring, and play mini matches. Players who reach T-Rex Gold can be recognized as Dinkin Dinos All-Stars at an end-of-year celebration — receiving a special medal or All-Star badge!</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Session Structure + Schedule -->
+    <div class="dd-session-section">
+      <div class="dd-session-grid">
+
+        <div class="reveal-section" data-reveal="left">
+          <span style="font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#a0d840;margin-bottom:12px;display:block;">How It Works</span>
+          <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-0.02em;margin-bottom:8px;">What a Session Looks Like</h2>
+          <p style="font-size:14px;color:#888;line-height:1.65;margin-bottom:0;">Each 8-week session runs once per week for 60 minutes, and follows a consistent, kid-friendly structure so players know what to expect every week.</p>
+
+          <div class="session-feature-list">
+            <div class="session-feature">
+              <div class="session-feature-icon">🎯</div>
+              <div class="session-feature-body">
+                <div class="session-feature-title">Short, High-Energy Games</div>
+                <div class="session-feature-desc">Games that match children's attention spans — lots of ball touches so every child feels successful quickly.</div>
+              </div>
+            </div>
+            <div class="session-feature">
+              <div class="session-feature-icon">🏅</div>
+              <div class="session-feature-body">
+                <div class="session-feature-title">Weekly Sticker &amp; Badge Rewards</div>
+                <div class="session-feature-desc">Kids earn stickers by showing effort, kindness, and a specific skill each week — stickers go in their Dino Passport.</div>
+              </div>
+            </div>
+            <div class="session-feature">
+              <div class="session-feature-icon">🦕</div>
+              <div class="session-feature-body">
+                <div class="session-feature-title">Dino Storytelling &amp; Characters</div>
+                <div class="session-feature-desc">A friendly, supportive environment built around Dino characters and stories — kids think they're playing with dinosaurs.</div>
+              </div>
+            </div>
+            <div class="session-feature">
+              <div class="session-feature-icon">🎉</div>
+              <div class="session-feature-body">
+                <div class="session-feature-title">Week 8 Badge Ceremony</div>
+                <div class="session-feature-desc">Players receive their Dino Level Badge and either level up (with new stripes) or advance to the next Dino Level.</div>
+              </div>
+            </div>
+            <div class="session-feature">
+              <div class="session-feature-icon">🍦</div>
+              <div class="session-feature-body">
+                <div class="session-feature-title">Ice Cream Party!</div>
+                <div class="session-feature-desc">Ice cream party at the end of each 8-week session — every kid finishes a winner.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule & Cost Card -->
+        <div class="reveal-section" data-reveal="right">
+          <div class="dd-schedule-card">
+            <h3>📅 Schedule &amp; Registration</h3>
+
+            <div class="schedule-row">
+              <span class="schedule-day">Monday</span>
+              <span class="schedule-time">5–6 PM</span>
+            </div>
+            <div class="schedule-row">
+              <span class="schedule-day">Thursday</span>
+              <span class="schedule-time">5–6 PM</span>
+            </div>
+            <div class="schedule-row">
+              <span class="schedule-day">Saturday</span>
+              <span class="schedule-time">1–2 PM</span>
+            </div>
+
+            <div class="dd-cost-highlight">
+              <div class="price">$336</div>
+              <div class="price-note">Per 8-Week Session · Sessions begin September 2026</div>
+            </div>
+
+            <div style="font-size:12px;color:#777;line-height:1.6;margin-bottom:4px;">📍 90 Bartley Flanders Rd, Flanders, NJ</div>
+            <div style="font-size:12px;color:#777;line-height:1.6;margin-bottom:4px;">📞 973-973-7297</div>
+            <div style="font-size:12px;color:#777;line-height:1.6;">Year-round program — up to 5 sessions per year</div>
+
+            <a href="#" class="dd-register-btn" onclick="showPage('contact'); return false;">
+              Register or Ask About Dinkin Dinos →
+            </a>
+
+            <div style="text-align:center;margin-top:14px;font-size:11px;color:#555;">All questions welcome · We respond quickly</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="junior-showcase content-band">
-    <div class="reveal-section" data-reveal="blur">
-      <h3 class="section-heading" style="display:block;text-align:center;margin-bottom:8px;">Training floor preview</h3>
-      <p style="text-align:center;color:#888;font-size:14px;max-width:520px;margin:0 auto 20px;">Placeholder visual for junior programming and partner branding—photography arrives closer to opening.</p>
-      <div class="img-placeholder junior-ph">
-        <div><div style="font-size:40px">🎯</div><div>Junior Academy · Courts &amp; drills<br><span style="color:#444;font-weight:400;font-size:11px;">Creative coming soon</span></div></div>
-      </div>
-      <div class="two-col-features stagger-children" style="margin-top:28px;">
-        <div class="highlight-card">
-          <h3>Fundamentals first</h3>
-          <p>Grip, footwork, and decision-making taught in age-appropriate blocks with certified coaches.</p>
+
+    <!-- Badges & Rewards -->
+    <div class="dd-badges-section">
+      <span style="font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#a0d840;margin-bottom:12px;display:block;">Rewards System</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-0.02em;margin-bottom:8px;">Dino Badges &amp; Rewards</h2>
+      <p style="font-size:14px;color:#888;line-height:1.65;max-width:620px;margin-bottom:0;">Every child earns, collects, and displays their progress — turning each session into an adventure.</p>
+
+      <div class="badge-cards-grid stagger-children">
+        <div class="badge-card">
+          <div class="badge-card-icon">📘</div>
+          <div class="badge-card-title">Dino Passport</div>
+          <div class="badge-card-desc">Every 8-week session includes a Dino Passport. Kids collect multiple badges on a lanyard and track their journey to Dino All-Star.</div>
         </div>
-        <div class="highlight-card">
-          <h3>Club integration</h3>
-          <p>Juniors experience the same premium surfaces and culture as adult members—just sized for them.</p>
+        <div class="badge-card">
+          <div class="badge-card-icon">🌟</div>
+          <div class="badge-card-title">Weekly Stickers</div>
+          <div class="badge-card-desc">Each week features a different Dino — Rally Rex (Courage), Steggi (Great Teammate), Ptera (Fast Feet), Tria (Kindness) and more.</div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-card-icon">🏆</div>
+          <div class="badge-card-title">Session Badge Ceremony</div>
+          <div class="badge-card-desc">In Week 8, players receive their Dino Level Badge — either leveling up with new stripes or advancing to the next full Dino Level.</div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-card-icon">🥇</div>
+          <div class="badge-card-title">All-Star Recognition</div>
+          <div class="badge-card-desc">Players who reach T-Rex Gold are recognized as Dinkin Dinos All-Stars at an end-of-year celebration with a special medal.</div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-card-icon">🦕</div>
+          <div class="badge-card-title">Collect &amp; Level Up</div>
+          <div class="badge-card-desc">Kids work toward becoming a Dinkin Dinos All-Star across multiple sessions — earning stripes and leveling through Hatchling to T-Rex Gold.</div>
+        </div>
+        <div class="badge-card">
+          <div class="badge-card-icon">🌈</div>
+          <div class="badge-card-title">Year-Round Adventure</div>
+          <div class="badge-card-desc">With up to 5 sessions per year, families can choose multiple "Dino Adventures" — keeping kids engaged season after season.</div>
         </div>
       </div>
     </div>
-  </div>
-  <section class="page-close" aria-labelledby="junior-close-heading">
+
+  </div><!-- /panel-dinkin -->
+
+
+  <!-- ============================
+       COMPETITIVE EDGE PANEL
+       ============================ -->
+  <div id="panel-ce" class="program-panel" role="tabpanel" aria-labelledby="tab-ce">
+
+    <!-- Hero -->
+    <div class="ce-hero">
+      <div class="ce-hero-inner">
+        <!-- Left: Info -->
+        <div class="reveal-section" data-reveal="left">
+          <div class="ce-logo-badge">
+            <div class="ce-logo-mark">
+              <div class="ce-inner-dot"></div>
+            </div>
+            <div class="ce-logo-text">
+              <div class="ce-name">COMPETITIVE<strong>EDGE</strong></div>
+              <div class="ce-sub">Pickleball Academy · PB(973)</div>
+            </div>
+          </div>
+
+          <h2 class="ce-tagline">Train. Compete.<br><span class="accent">Excel.</span></h2>
+
+          <p class="ce-hero-desc">Competitive Edge is a performance-based junior training model designed to help young players from foundational skills through advanced competitive play. We cater to all levels — from beginners to tournament competitors.</p>
+
+          <div class="ce-hero-pills">
+            <span class="ce-pill">All Skill Levels</span>
+            <span class="ce-pill">CE1 → CE3 → HP</span>
+            <span class="ce-pill">PB(973) Coaching Staff</span>
+            <span class="ce-pill">Tournament Prep</span>
+            <span class="ce-pill">Decision Making</span>
+            <span class="ce-pill">Character Development</span>
+          </div>
+
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="#" class="btn-email" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">✉ Register at (973) 973-7297</a>
+            <a href="#" class="btn-ghost" style="font-size:13px;padding:12px 26px;" onclick="showPage('contact'); return false;">Ask About CE</a>
+          </div>
+        </div>
+
+        <!-- Right: Visual Card -->
+        <div class="reveal-section" data-reveal="right">
+          <div class="ce-visual-card">
+            <div class="ce-stat-row">
+              <div class="ce-stat">
+                <div class="ce-stat-num">4</div>
+                <div class="ce-stat-lbl">Levels</div>
+              </div>
+              <div class="ce-stat">
+                <div class="ce-stat-num">1</div>
+                <div class="ce-stat-lbl">Elite Facility</div>
+              </div>
+              <div class="ce-stat">
+                <div class="ce-stat-num">6</div>
+                <div class="ce-stat-lbl">Courts</div>
+              </div>
+            </div>
+            <div class="ce-quote">
+              "We don't just develop technical skill — we build confidence, decision-making, and a passion for excellence."
+            </div>
+            <div style="margin-top:16px;font-size:11px;color:#555;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">CE Philosophy · PB(973)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CE Levels -->
+    <div class="ce-levels-section">
+      <span style="font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#aadd00;margin-bottom:12px;display:block;">Competitive Edge Progression</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-0.02em;margin-bottom:8px;">From Foundation to High Performance</h2>
+      <p style="font-size:14px;color:#888;line-height:1.65;max-width:600px;margin-bottom:0;">Competitive Edge takes players through the game through sound instruction, strong habits, and a positive training environment. Every CE level establishes the foundation for long-term growth.</p>
+
+      <div class="ce-levels-grid stagger-children">
+
+        <div class="ce-level-card ce1">
+          <div class="ce-level-num">CE1</div>
+          <div class="ce-level-title">Development</div>
+          <div class="ce-level-desc">Strong basics and clear direction. Instruction is placed on building technique through on-court movement, hand eye coordination and fundamentals. Emphasis is placed on teaching players to love the game through sportsmanship and good, regulated play.</div>
+          <div class="ce-level-focus">Foundation · Fundamentals · Habits</div>
+        </div>
+
+        <div class="ce-level-card ce2">
+          <div class="ce-level-num">CE2</div>
+          <div class="ce-level-title">Training Group</div>
+          <div class="ce-level-desc">Training Group introduces players to more disciplined training habits through competitive match play. Emphasis is placed on building reliable patterns, stronger decisions, and confidence under variable play conditions while reinforcing consistency, focus, and excellence in all areas.</div>
+          <div class="ce-level-focus">Consistency · Decisions · Patterns</div>
+        </div>
+
+        <div class="ce-level-card ce3">
+          <div class="ce-level-num">CE3</div>
+          <div class="ce-level-title">Performance</div>
+          <div class="ce-level-desc">For players ready to train and compete at a higher level. Players develop tactical awareness, strong mental composure, and advanced match execution. Training becomes more demanding with greater emphasis on decision making, intensity, and performance under pressure.</div>
+          <div class="ce-level-focus">Tactics · Intensity · Mental Toughness</div>
+        </div>
+
+        <div class="ce-level-card hp">
+          <div class="ce-level-num" style="font-size:32px;letter-spacing:-0.02em;">HP</div>
+          <div class="ce-level-title">High Performance</div>
+          <div class="ce-level-desc">High Performance players competing at a higher standard — those who have demonstrated intensity, accountability, and growth through previous CE levels. Involves tournament competition readiness, advanced strategy, and preparation for elite competitive environments.</div>
+          <div class="ce-level-focus">Elite Competition · Strategy · Excellence</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CE Philosophy + Register -->
+    <div class="ce-philosophy-section">
+      <div class="ce-philosophy-grid">
+
+        <div class="reveal-section" data-reveal="left">
+          <span style="font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#aadd00;margin-bottom:12px;display:block;">What Sets CE Apart</span>
+          <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-0.02em;margin-bottom:8px;">Pros Apart, Pros Ahead</h2>
+          <p style="font-size:14px;color:#888;line-height:1.65;margin-bottom:0;">At PB(973), our senior players are coached by a team of Competitive Edge professionals — coaches with established competitive backgrounds and a commitment to excellence.</p>
+
+          <div class="ce-differentiator-list">
+            <div class="ce-diff-item">
+              <span class="ce-diff-icon">🎓</span>
+              <div class="ce-diff-body">
+                <div class="ce-diff-title">PB(973) Professional Coaching Team</div>
+                <div class="ce-diff-desc">Coaches with competitive backgrounds, a passion for development, and a unified coaching philosophy guiding every session.</div>
+              </div>
+            </div>
+            <div class="ce-diff-item">
+              <span class="ce-diff-icon">🏆</span>
+              <div class="ce-diff-body">
+                <div class="ce-diff-title">High-Level Playing Experience</div>
+                <div class="ce-diff-desc">We focus on teaching, not just playing. Coaches are experienced in the technical, positional, and development driven aspects of the game.</div>
+              </div>
+            </div>
+            <div class="ce-diff-item">
+              <span class="ce-diff-icon">🧠</span>
+              <div class="ce-diff-body">
+                <div class="ce-diff-title">Focus on the Complete Player</div>
+                <div class="ce-diff-desc">All CE levels follow a unified coaching philosophy that develops not only technical skill, but also confidence, decision making, character, and competitive play.</div>
+              </div>
+            </div>
+            <div class="ce-diff-item">
+              <span class="ce-diff-icon">🤝</span>
+              <div class="ce-diff-body">
+                <div class="ce-diff-title">Welcoming Young Players</div>
+                <div class="ce-diff-desc">We welcome young players who want to develop their game, train hard, and compete. Come join the program built around excellence at PB(973).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Register Card -->
+        <div class="reveal-section" data-reveal="right">
+          <div class="ce-register-card">
+            <h3>🎯 Get Started with CE</h3>
+
+            <div class="ce-info-item">
+              <span class="ce-info-icon">📍</span>
+              <div class="ce-info-text">
+                <strong>Location</strong>
+                90 Bartley Flanders Rd, Flanders, NJ
+              </div>
+            </div>
+            <div class="ce-info-item">
+              <span class="ce-info-icon">📞</span>
+              <div class="ce-info-text">
+                <strong>Register &amp; Info</strong>
+                973-973-7297
+              </div>
+            </div>
+            <div class="ce-info-item">
+              <span class="ce-info-icon">🏟️</span>
+              <div class="ce-info-text">
+                <strong>Facility</strong>
+                PB(973) — 6 Championship Courts, premium surfaces
+              </div>
+            </div>
+            <div class="ce-info-item">
+              <span class="ce-info-icon">📈</span>
+              <div class="ce-info-text">
+                <strong>Levels Available</strong>
+                CE1 Development · CE2 Training · CE3 Performance · HP
+              </div>
+            </div>
+            <div class="ce-info-item">
+              <span class="ce-info-icon">👶</span>
+              <div class="ce-info-text">
+                <strong>Who Can Join</strong>
+                All skill levels welcome — from beginner to advanced tournament players
+              </div>
+            </div>
+
+            <a href="tel:9739737297" class="ce-register-btn">
+              Call (973) 973-7297 to Register →
+            </a>
+            <a href="#" class="ce-register-btn" style="background:transparent;color:#aadd00;border:1px solid rgba(170,221,0,0.35);margin-top:10px;" onclick="showPage('contact'); return false;">
+              Send a Message Instead →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /panel-ce -->
+
+
+  <!-- Shared: Both Programs CTA -->
+  <section class="junior-page-close page-close" aria-labelledby="junior-shared-cta">
     <div class="texture-band" aria-hidden="true"></div>
-    <div class="page-close-inner reveal-section" data-reveal="up">
-      <p class="section-kicker">Parents</p>
-      <h2 id="junior-close-heading" class="section-heading">Get notified when enrollment opens</h2>
-      <div class="stat-grid stagger-children">
+    <div class="reveal-section" data-reveal="scale">
+      <p class="section-kicker">Junior Programs at PB(973)</p>
+      <h2 id="junior-shared-cta" class="section-heading">The Right Program for Every Young Player</h2>
+      <p style="font-size:15px;color:#888;line-height:1.7;max-width:560px;margin:0 auto 8px;">Both programs share the same premium courts, the same community — and the same commitment to developing great players and great people.</p>
+
+      <div class="junior-cta-grid">
+        <a href="#" class="junior-cta-card dd-card" onclick="switchProgram('dinkin'); window.scrollTo(0,0); return false;">
+          <div class="cta-card-label dd">🦕 Ages 5–9</div>
+          <div class="cta-card-title">Dinkin Dinos</div>
+          <div class="cta-card-desc">Fun, characters, badges, and ice cream — the perfect introduction to pickleball for young kids.</div>
+          <div class="cta-card-action dd">Explore Dinkin Dinos <span>→</span></div>
+        </a>
+        <a href="#" class="junior-cta-card ce-card" onclick="switchProgram('ce'); window.scrollTo(0,0); return false;">
+          <div class="cta-card-label ce">🎯 All Skill Levels</div>
+          <div class="cta-card-title">Competitive Edge</div>
+          <div class="cta-card-desc">Serious training, elite coaching, and a clear path from beginner to high-performance competitor.</div>
+          <div class="cta-card-action ce">Explore Competitive Edge <span>→</span></div>
+        </a>
+      </div>
+
+      <div class="stat-grid stagger-children" style="margin-top:48px;">
         <div class="stat-card">
           <div class="stat-value" data-target="2" data-suffix="">0</div>
-          <div class="stat-label">Partner programs showcased</div>
+          <div class="stat-label">World-Class Junior Programs</div>
         </div>
         <div class="stat-card">
           <div class="stat-value" data-target="6" data-suffix="">0</div>
-          <div class="stat-label">Courts juniors will share</div>
+          <div class="stat-label">Championship Courts for Juniors</div>
         </div>
         <div class="stat-card">
           <div class="stat-value" data-target="100" data-suffix="%">0</div>
-          <div class="stat-label">Commitment to coach-led safety</div>
+          <div class="stat-label">Commitment to Coach-Led Safety</div>
         </div>
       </div>
-      <blockquote class="quote-block">
-        “Great junior programs do not rush rankings—they build athletes who respect the game and each other.”
-        <cite>PB(973) programming values</cite>
+
+      <blockquote class="quote-block" style="max-width:680px;margin:36px auto;">
+        "Great junior programs don't rush rankings — they build athletes who respect the game and each other."
+        <cite>PB(973) Programming Values</cite>
       </blockquote>
+
       <div class="mini-cta-row">
-        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Ask about juniors</a>
-        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">Membership overview</a>
+        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Ask About Junior Programs</a>
+        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-cta-strip">
-      <p>Junior Academy updates ship with the main member list—stay on both.</p>
+      <p>Junior Academy updates ship with the main member list — stay on both.</p>
       <div class="footer-cta-actions">
         <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
         <a href="#" class="btn-solid" onclick="showPage('membership'); return false;">Join the list</a>
@@ -612,7 +1082,8 @@
     </div>
     <div class="footer-bottom"></div>
   </footer>
-</div>
+
+</div><!-- /page-junior -->
 
 <!-- ===== MEMBERSHIP PAGE ===== -->
 <div id="page-membership" class="page">
@@ -960,121 +1431,198 @@
 
 <!-- ===== FAQ PAGE ===== -->
 <div id="page-faq" class="page">
-  <div class="page-header"><h1>FAQ's</h1></div>
 
-  <div class="content-band">
-    <div class="content-band-inner reveal-section" data-reveal="blur">
-      <p class="section-kicker">Answers</p>
-      <h2 class="section-heading">What members ask before day one</h2>
-      <p style="color:#aaa;font-size:15px;line-height:1.7;max-width:560px;margin:0 auto;">Straight talk on memberships, bookings, coaching, food policy, and court-share math—no fine print surprises.</p>
+  <!-- Hero Banner -->
+  <div class="faq-hero">
+    <div class="faq-hero-bg" aria-hidden="true">
+      <div class="faq-hero-orb faq-hero-orb--1"></div>
+      <div class="faq-hero-orb faq-hero-orb--2"></div>
+    </div>
+    <div class="faq-hero-inner">
+      <p class="faq-hero-kicker">Got questions?</p>
+      <h1 class="faq-hero-title">Frequently Asked<br><span class="faq-hero-accent">Questions</span></h1>
+      <p class="faq-hero-sub">Everything you need to know about memberships, bookings, courts, and the PB(973) experience — answered clearly.</p>
+
+      <!-- Search Bar -->
+      <div class="faq-search-wrap">
+        <span class="faq-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input
+          type="text"
+          class="faq-search-input"
+          id="faqSearchInput"
+          placeholder="Search questions…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search FAQ"
+        >
+        <button class="faq-search-clear" id="faqSearchClear" aria-label="Clear search" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="faq-list">
-    <div class="reveal-section" data-reveal="up">
-    <div class="stagger-children">
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Do I Have to Have a Paid Membership to Play at PB(973)?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>NO, you do not need paid membership to play at PB(973). With the Free Code Access Membership, you can pay as you go or purchase our annual Code Priority or Code Senior 65+ and receive advanced booking windows, discounted court fees for open play, events, court rentals and more. All memberships are valid for 1 year from the day PB(973) opens or after opening from day payment is made.</p>
-      </div>
+  <!-- Category Filter Pills -->
+  <div class="faq-cats-wrap" role="tablist" aria-label="FAQ categories">
+    <div class="faq-cats">
+      <button class="faq-cat active" data-cat="all" role="tab" aria-selected="true">All Topics</button>
+      <button class="faq-cat" data-cat="membership" role="tab" aria-selected="false">Membership</button>
+      <button class="faq-cat" data-cat="booking" role="tab" aria-selected="false">Bookings &amp; Courts</button>
+      <button class="faq-cat" data-cat="rules" role="tab" aria-selected="false">Rules &amp; Policy</button>
+      <button class="faq-cat" data-cat="amenities" role="tab" aria-selected="false">Amenities</button>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Can I Cancel My Booking?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>YES:</p>
-        <ul>
-          <li>No charge when management cancels due to weather conditions or other unforeseen issues.</li>
-          <li>No charge when 12+ hours' notice of cancellation is given for open play.</li>
-          <li>No charge when 24+ hours' notice of cancellation is given for clinic and private lessons.</li>
-          <li>Private Court Rentals cannot be cancelled but can be moved to another day and time with 48 hours' notice.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        If There Is an Open Court While We Are Playing, Can Our Players Sitting Out Use It?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>NO, you may not use any court without a reservation for that court. Jumping courts will result in a fine. However, you can see if the court is available to rent and book it at that time.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        If I Am a Pickleball Coach, but Not on the PB(973) Coaching Roster, Can I Book a Court and Give a Paid Coaching Lesson?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>NO, this is not permitted. If you are interested in using PB(973) Club's venue to coach students, please contact us to discuss.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Can I Pick a Specific Court?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>YES, you can select a court on the app before finalizing your payment, if the court is available at that time. Otherwise the system will automatically assign a court.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Can We Bring Drinks or Food?
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>Yes, you can but no drinks or food are allowed on the playing courts. Players can bring water on the courts but keep colored drinks and snacks outside the play area. We also have vending machines with food and drinks for sale. There is also a hydration station in the facility to refill your water bottle.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        What Is Your Court Rental Rate Per Hour? (We Use the Player-Share Model)
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>When you reserve a private court, the cost is split based on who is playing. The Court Rate for Free Code Access Member is $52.00/Hours, which breaks down to $13.00/share for a foursome. Our system automatically calculates the cost based on each player's membership type.</p>
-        <ul>
-          <li>4 Code Access Members: $52 Total ($13/person)</li>
-          <li>3 Code Access and 1 Code Priority Member: $13 per Hours for each Code Access Member and $10 per Hours for Code Priority Member</li>
-          <li>Code Priority Senior 65+: Court Rental $46 per Hours</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Tell Me About Mahjong at PB(973)
-        <span class="faq-icon">∧</span>
-      </div>
-      <div class="faq-a">
-        <p>Experience the joy of Mahjong with every tile you play. Build lifelong connections, hone your skills. Mahjong isn't just a game — it's a lifestyle of laughter, learning, and camaraderie.</p>
-      </div>
-    </div>
-
-    </div>
-    </div>
-
   </div>
+
+  <!-- FAQ Accordion List -->
+  <div class="faq-v2-section">
+    <div class="faq-v2-list" id="faqList" role="list">
+      <div class="faq-v2-item" data-cat="membership" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Do I have to have a paid membership to play at PB(973)?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>No — you do not need a paid membership to play. With the <strong>Free Code Access Membership</strong>, you can pay as you go. Or upgrade to our annual <strong>Code Priority</strong> or <strong>Code Senior 65+</strong> tiers for advanced booking windows, discounted court fees, and more.</p>
+            <p>All memberships are valid for 1 year from the day PB(973) opens, or from the day payment is made after opening.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="booking" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Can I cancel my booking?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>Yes, cancellations are allowed under the following conditions:</p>
+            <ul class="faq-v2-list-inner">
+              <li>No charge if management cancels due to weather or unforeseen issues.</li>
+              <li>No charge with <strong>12+ hours' notice</strong> for open play.</li>
+              <li>No charge with <strong>24+ hours' notice</strong> for clinics and private lessons.</li>
+              <li>Private Court Rentals <strong>cannot be cancelled</strong> but may be rescheduled with 48 hours' notice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="booking" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Can I pick a specific court?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>Yes — you can select your preferred court in the app before finalizing payment, provided it's available. If not, the system will automatically assign you a court.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="rules" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Can players sitting out use an open court while others are playing?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>No. You may not use any court without a valid reservation for that specific court. Jumping to unreserved courts will result in a fine. You can, however, check if the court is available and book it on the spot.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="rules" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Can an outside pickleball coach book a court for paid lessons?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>No — coaches not on the official PB(973) coaching roster are not permitted to charge for lessons on our courts. If you're interested in coaching here, please <a href="#" onclick="showPage('contact'); return false;" class="faq-v2-link">contact us</a> to discuss a partnership.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="amenities" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Can we bring drinks or food?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>You may bring your own, but <strong>no food or colored drinks are allowed on the playing courts</strong>. Water is permitted courtside. Vending machines and a hydration station are available throughout the facility.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="membership" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">What is your court rental rate per hour?</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>We use a <strong>player-share model</strong> — the court cost is split among who's playing:</p>
+            <div class="faq-v2-pricing">
+              <div class="faq-v2-pricing-row">
+                <span>4 Code Access Members</span>
+                <span>$52 total <em>($13/person)</em></span>
+              </div>
+              <div class="faq-v2-pricing-row">
+                <span>3 Code Access + 1 Code Priority</span>
+                <span>$13/hr + $10/hr respectively</span>
+              </div>
+              <div class="faq-v2-pricing-row">
+                <span>Code Priority Senior 65+</span>
+                <span>$46/hr court rental</span>
+              </div>
+            </div>
+            <p>The app automatically calculates each player's share based on their membership tier.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-v2-item" data-cat="amenities" role="listitem">
+        <button class="faq-v2-trigger" aria-expanded="false" onclick="toggleFaqV2(this)">
+          <span class="faq-v2-q">Tell me about Mahjong at PB(973)</span>
+          <span class="faq-v2-chevron" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-v2-body" hidden>
+          <div class="faq-v2-content">
+            <p>Mahjong at PB(973) is more than a game — it's a community. Build lifelong connections and sharpen your skills in a curated social space designed for laughter, learning, and camaraderie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="faq-no-results" id="faqNoResults" hidden aria-live="polite">
+      <div class="faq-no-results-icon">&#128269;</div>
+      <p class="faq-no-results-title">No matches found</p>
+      <p class="faq-no-results-sub">Try a different keyword or <a href="#" onclick="clearFaqSearch(); return false;" class="faq-v2-link">clear your search</a>.</p>
+    </div>
+  </div>
+
+  <!-- Still Curious CTA -->
+  <section class="faq-still-curious reveal-section" data-reveal="up">
+    <div class="faq-still-curious-inner">
+      <p class="faq-still-kicker">Still have questions?</p>
+      <h2 class="faq-still-heading">We're one message away</h2>
+      <p class="faq-still-sub">Can't find what you're looking for? Our team is happy to help — we update this page as the community grows.</p>
+      <div class="faq-still-actions">
+        <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact Us</a>
+        <a href="#" class="btn-ghost" onclick="showPage('membership'); return false;">View Memberships</a>
+      </div>
+    </div>
+  </section>
 
   <section class="page-close" aria-labelledby="faq-close-heading">
     <div class="texture-band" aria-hidden="true"></div>
     <div class="page-close-inner reveal-section" data-reveal="right">
-      <p class="section-kicker">Still curious?</p>
-      <h2 id="faq-close-heading" class="section-heading">We are one message away</h2>
+      <p class="section-kicker">By the numbers</p>
+      <h2 id="faq-close-heading" class="section-heading">Built around your experience</h2>
       <div class="stat-grid stagger-children">
         <div class="stat-card">
           <div class="stat-value" data-target="8" data-suffix="">0</div>
@@ -1090,8 +1638,8 @@
         </div>
       </div>
       <blockquote class="quote-block">
-        “If your question is not here yet, ask it—we add to this list as the community grows.”
-        <cite>PB(973) member services</cite>
+        "If your question isn't here yet, ask it — we add to this list as our community grows."
+        <cite>PB(973) Member Services</cite>
       </blockquote>
       <div class="mini-cta-row">
         <a href="#" class="btn-email" onclick="showPage('contact'); return false;">✉ Contact us</a>
@@ -1102,7 +1650,7 @@
 
   <footer>
     <div class="footer-cta-strip">
-      <p>Bookmark this page—we update answers as opening week approaches.</p>
+      <p>Bookmark this page — we update answers as opening week approaches.</p>
       <div class="footer-cta-actions">
         <a href="#" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
         <a href="#" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
