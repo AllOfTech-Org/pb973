@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pb973.com/sitemap.xml

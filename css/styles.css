@@ -1364,35 +1364,226 @@ button.btn-join.btn-join-nav {
 .fb { background: #1877f2; }
 .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
-/* ===== ABOUT PAGE ===== */
-.page-header { padding: 60px 80px 40px; }
-.page-header h1 { font-family: 'Montserrat', sans-serif; font-size: 56px; font-weight: 900; }
+/* ===== ABOUT PAGE (REDESIGNED) ===== */
 
-.about-hero-img { width: calc(100% - 160px); margin: 0 80px 60px; height: 500px; object-fit: cover; border-radius: 16px; }
-
-.about-body { padding: 0 80px 60px; }
-.about-body h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; margin-bottom: 20px; }
-.about-body p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
-.about-body .highlight-p { color: var(--white); font-size: 15px; line-height: 1.8; }
-
-.about-quote {
-  background: #1a2a0a;
-  border: 1px solid #2a4a10;
-  border-radius: 12px;
-  padding: 28px 32px;
-  margin: 32px 0;
+/* Hero Banner */
+.about-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 620px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
-.about-quote p { color: var(--white) !important; font-size: 15px; line-height: 1.8; margin: 0; }
-
-.about-callout {
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 28px 32px;
-  margin: 32px 0;
-  background: #161616;
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(0.38);
 }
-.about-callout p { color: var(--white) !important; margin: 0; }
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.1) 0%,
+    rgba(10, 10, 10, 0.35) 40%,
+    rgba(10, 10, 10, 0.96) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px 64px;
+  width: 100%;
+}
+.about-hero-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(48px, 7vw, 86px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -3px;
+  margin: 14px 0 20px;
+}
+.about-hero-heading .green { color: var(--green); }
+.about-hero-sub {
+  font-size: 17px;
+  color: #ccc;
+  max-width: 480px;
+  line-height: 1.6;
+  margin: 0;
+}
 
+/* Mission section */
+.about-mission {
+  padding: 72px 80px 56px;
+  text-align: center;
+  background: var(--black);
+}
+.about-mission-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.about-lead {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.75;
+  margin-top: 24px;
+}
+.about-lead strong { color: var(--white); }
+
+/* Story / Leadership section */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-story-text p {
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.8;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.about-leader-card {
+  background: linear-gradient(155deg, rgba(170, 255, 0, 0.07) 0%, rgba(255, 255, 255, 0.03) 60%, rgba(0, 0, 0, 0.1) 100%);
+  border: 1px solid rgba(170, 255, 0, 0.22);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(170, 255, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+.about-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5), 0 0 32px rgba(170, 255, 0, 0.1);
+}
+.about-leader-icon { font-size: 40px; line-height: 1; margin-bottom: 16px; display: block; }
+.about-leader-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.about-leader-role {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nav-neon);
+  margin-bottom: 16px;
+  display: block;
+}
+.about-leader-bio {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  display: block;
+}
+.about-leader-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.about-partner-bar {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.about-partner-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #666;
+}
+.about-partner-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+/* Club Pillars section */
+.about-pillars-section {
+  padding: 80px 80px 88px;
+  background: var(--black);
+}
+.about-pillars-inner { max-width: 1100px; margin: 0 auto; }
+.about-pillars-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 52px;
+}
+.about-pillars-sub {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.about-pillar-card {
+  padding: 28px 22px 30px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.about-pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(170, 255, 0, 0.35);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(170, 255, 0, 0.07);
+}
+.about-pillar-icon { font-size: 36px; line-height: 1; margin-bottom: 18px; display: block; }
+.about-pillar-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.about-pillar-card p { font-size: 13px; color: #888; line-height: 1.65; margin: 0; }
+
+/* Vision section */
+.about-vision-block {
+  text-align: center;
+  padding: 32px 0;
+}
+.about-vision-accent {
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  border-radius: 2px;
+  margin: 0 auto 32px;
+}
+.about-vision-text {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.85;
+  max-width: 760px;
+  margin: 0 auto 20px;
+}
+.about-vision-text strong { color: var(--white); }
+.about-vision-location {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--nav-neon);
+}
+
+/* Taglines */
 .taglines { text-align: center; padding: 40px 80px; }
 .taglines p { font-style: italic; font-size: 20px; color: #ccc; margin: 8px 0; }
 .taglines .green-line { color: var(--green); font-style: italic; font-size: 22px; font-weight: 700; }
@@ -3837,12 +4028,51 @@ footer {
 }
 
 /* About page mobile hardening */
+@media (max-width: 1100px) {
+  .about-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .about-story-grid {
+    gap: 40px;
+  }
+}
+
 @media (max-width: 768px) {
+  .about-hero-banner { height: 480px; }
+  .about-hero-content { padding: 0 var(--pad-mobile-l) 48px; }
+  .about-hero-heading { font-size: clamp(36px, 10vw, 56px); letter-spacing: -1.5px; }
+  .about-hero-sub { font-size: 15px; max-width: 100%; }
+
+  .about-mission {
+    padding: 48px var(--pad-mobile-l) 40px;
+  }
+  .about-lead { font-size: 16px; }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-pillars-section {
+    padding: 56px var(--pad-mobile-l) 64px;
+  }
+  .about-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .about-pillars-header { margin-bottom: 36px; }
+  .about-pillar-card { padding: 22px 18px 24px; }
+  .about-pillar-icon { font-size: 30px; margin-bottom: 14px; }
+  .about-pillar-card h3 { font-size: 15px; }
+  .about-pillar-card p { font-size: 12px; }
+
+  .about-vision-text { font-size: 16px; }
+
   #page-about .content-band {
     padding-left: var(--pad-mobile-l) !important;
     padding-right: var(--pad-mobile-r) !important;
   }
-
   #page-about .content-band .section-heading {
     display: block;
     width: 100%;
@@ -3850,49 +4080,16 @@ footer {
     font-size: clamp(23px, 7vw, 32px);
     line-height: 1.15;
   }
-
-  #page-about .two-col-features {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  #page-about .highlight-card {
-    padding: 18px 16px;
-    border-radius: 12px;
-  }
-
-  #page-about .highlight-card h3 {
-    font-size: 16px;
-    line-height: 1.25;
-  }
-
-  #page-about .highlight-card p {
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
   #page-about .taglines p {
     font-size: clamp(16px, 5.1vw, 18px);
     line-height: 1.45;
   }
-
-  #page-about .taglines .green-line {
-    font-size: clamp(17px, 5.3vw, 20px);
-  }
-
-  #page-about .mission-p {
-    margin-top: 18px;
-    font-size: 14px;
-    line-height: 1.65;
-  }
-
+  #page-about .taglines .green-line { font-size: clamp(17px, 5.3vw, 20px); }
+  #page-about .mission-p { margin-top: 18px; font-size: 14px; line-height: 1.65; }
   #page-about .page-close {
     padding-left: var(--pad-mobile-l) !important;
     padding-right: var(--pad-mobile-r) !important;
   }
-
   #page-about #about-close-heading.section-heading {
     display: block;
     width: 100%;
@@ -3900,14 +4097,12 @@ footer {
     font-size: clamp(23px, 7vw, 32px);
     line-height: 1.15;
   }
-
   #page-about .page-close .stat-grid {
     grid-template-columns: 1fr !important;
     gap: 14px;
     margin: 22px 0 28px;
     width: 100%;
   }
-
   #page-about .page-close .stat-card {
     padding: 20px 14px;
     border-radius: 12px;
@@ -3916,12 +4111,10 @@ footer {
     min-width: 0;
     box-sizing: border-box;
   }
-
   #page-about .page-close .stat-card .stat-value {
     font-size: clamp(30px, 12vw, 44px);
     line-height: 1;
   }
-
   #page-about .page-close .stat-card .stat-label {
     margin-top: 8px;
     font-size: 11px;
@@ -3929,13 +4122,11 @@ footer {
     letter-spacing: 0.04em;
     overflow-wrap: break-word;
   }
-
   #page-about .page-close .quote-block {
     padding: 20px 14px;
     font-size: 14px;
     line-height: 1.6;
   }
-
   #page-about .page-close .quote-block cite {
     font-size: 11px;
     letter-spacing: 0.1em;
@@ -3943,24 +4134,25 @@ footer {
 }
 
 @media (max-width: 479px) {
+  .about-hero-banner { height: 420px; }
+  .about-hero-heading { letter-spacing: -1px; }
+
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .about-pillar-card { padding: 20px 16px; }
+
   #page-about .content-band,
   #page-about .page-close {
     padding-left: var(--pad-mobile-l) !important;
     padding-right: var(--pad-mobile-r) !important;
   }
-
   #page-about #about-close-heading.section-heading,
   #page-about .content-band .section-heading {
     font-size: clamp(21px, 8vw, 28px);
   }
-
-  #page-about .highlight-card {
-    padding: 16px 12px;
-  }
-
-  #page-about .page-close .stat-card {
-    padding: 18px 12px;
-  }
+  #page-about .page-close .stat-card { padding: 18px 12px; }
 }
 
 /* Contact page mobile hardening */

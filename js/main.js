@@ -586,16 +586,15 @@ function pageHasInDocumentContent(pageEl) {
 }
 
 function htmlPathForPageId(id) {
-  const map = {
-    home: 'index.html',
-    about: 'about.html',
-    contact: 'contact.html',
-    junior: 'junior.html',
-    membership: 'membership.html',
-    press: 'press.html',
-    faq: 'faq.html',
-  };
-  return map[id] || null;
+  // Clean URLs (no .html) for Vercel rewrites.
+  if (id === 'home') return '/';
+  if (id === 'about') return '/about';
+  if (id === 'contact') return '/contact';
+  if (id === 'junior') return '/junior';
+  if (id === 'membership') return '/membership';
+  if (id === 'press') return '/press';
+  if (id === 'faq') return '/faq';
+  return null;
 }
 
 /** Junior Programs: Dinkin Dinos vs Competitive Edge tab switcher (junior.html). */
@@ -645,7 +644,7 @@ function showPage(id) {
   // already pushes its own state and pageIdFromLocation will already match).
   try {
     if (pageIdFromLocation() !== id) {
-      const path = htmlPathForPageId(id) || (id === 'home' ? 'index.html' : id + '.html');
+      const path = htmlPathForPageId(id) || (id === 'home' ? '/' : '/' + id);
       history.pushState({ page: id }, '', path);
     }
   } catch (err) {}
@@ -756,6 +755,15 @@ function showPage(id) {
 
 function pageIdFromHref(href) {
   const h = (href || '').toLowerCase();
+  // Clean URL routes: /about, /contact, /faq (supports relative and absolute).
+  const pathPart = h.replace(/^https?:\/\/[^/]+/i, '').split('?')[0].split('#')[0];
+  if (pathPart === '' || pathPart === '/' || pathPart === '/index' || pathPart === '/index.html') return 'home';
+  if (pathPart === '/about' || pathPart === '/about/') return 'about';
+  if (pathPart === '/contact' || pathPart === '/contact/') return 'contact';
+  if (pathPart === '/junior' || pathPart === '/junior/') return 'junior';
+  if (pathPart === '/membership' || pathPart === '/membership/') return 'membership';
+  if (pathPart === '/press' || pathPart === '/press/') return 'press';
+  if (pathPart === '/faq' || pathPart === '/faq/') return 'faq';
   if (h.endsWith('/index.html') || h.endsWith('index.html') || h === '' || h === '/' ) return 'home';
   if (h.endsWith('/about.html') || h.endsWith('about.html')) return 'about';
   if (h.endsWith('/contact.html') || h.endsWith('contact.html')) return 'contact';
@@ -768,6 +776,12 @@ function pageIdFromHref(href) {
 
 function pageIdFromLocation() {
   const p = (location && location.pathname ? location.pathname : '').toLowerCase();
+  if (p === '/about' || p === '/about/') return 'about';
+  if (p === '/contact' || p === '/contact/') return 'contact';
+  if (p === '/junior' || p === '/junior/') return 'junior';
+  if (p === '/membership' || p === '/membership/') return 'membership';
+  if (p === '/press' || p === '/press/') return 'press';
+  if (p === '/faq' || p === '/faq/') return 'faq';
   if (p.endsWith('/') || p.endsWith('/index.html') || p.endsWith('index.html') || p === '') return 'home';
   if (p.endsWith('/about.html') || p.endsWith('about.html')) return 'about';
   if (p.endsWith('/contact.html') || p.endsWith('contact.html')) return 'contact';
