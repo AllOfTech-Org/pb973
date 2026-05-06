@@ -1053,6 +1053,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initMagneticButtons();
   initCustomCursor();
   initHeroParallax();
+  initCourseEnrollment();
 
   if (!hasGsap() || prefersReducedMotion()) {
     removeLoader();
@@ -1085,3 +1086,337 @@ window.addEventListener('DOMContentLoaded', () => {
 
   runIntro();
 });
+
+/* ===== Course Enrollment (standalone modal checkout) ===== */
+
+function initCourseEnrollment() {
+  const ENROLL_TO_EMAIL = 'info@pb973.com'; // admin/owner inbox (separate from general contact UX)
+
+  const selectors = [
+    '[data-course-card="1"]',
+    '[data-course-card="true"]',
+  ];
+
+  function escapeForText(s) {
+    return String(s || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function buildMailtoHref(payload) {
+    const subject = `PB(973) Enrollment — ${payload.courseTitle}`;
+    const lines = [
+      `Course: ${payload.courseTitle}`,
+      payload.courseId ? `Course ID: ${payload.courseId}` : null,
+      '',
+      `First name: ${payload.firstName}`,
+      `Last name: ${payload.lastName}`,
+      `Email: ${payload.email}`,
+      `Phone: ${payload.phone || ''}`,
+      '',
+      payload.notes ? `Notes: ${payload.notes}` : null,
+      '',
+      `Page: ${location && location.href ? location.href : ''}`,
+      `Time: ${new Date().toISOString()}`,
+    ].filter(Boolean);
+
+    const params = new URLSearchParams({
+      subject,
+      body: lines.join('\n'),
+    });
+    return `mailto:${encodeURIComponent(ENROLL_TO_EMAIL)}?${params.toString()}`;
+  }
+
+  function ensureModal() {
+    let backdrop = document.getElementById('enrollModalBackdrop');
+    if (backdrop) return backdrop;
+
+    backdrop = document.createElement('div');
+    backdrop.className = 'enroll-modal-backdrop';
+    backdrop.id = 'enrollModalBackdrop';
+    backdrop.hidden = true;
+    backdrop.setAttribute('aria-hidden', 'true');
+
+    backdrop.innerHTML = `
+      <div class="enroll-modal" role="dialog" aria-modal="true" aria-labelledby="enrollModalTitle">
+        <div class="enroll-modal-top">
+          <div class="enroll-modal-kicker">PB(973) · Enrollment</div>
+          <div class="enroll-modal-title" id="enrollModalTitle">
+            Checkout: <span id="enrollSelectedCourse">Selected course</span>
+          </div>
+          <div class="enroll-modal-sub">Complete this short form — your request goes directly to the owner inbox.</div>
+          <button type="button" class="enroll-modal-close" id="enrollModalClose" aria-label="Close enrollment">✕</button>
+        </div>
+
+        <div class="enroll-modal-body">
+          <div class="enroll-layout">
+            <aside class="enroll-summary" aria-label="Enrollment summary">
+              <div class="enroll-summary-chip">High priority · Fast reply</div>
+              <div class="enroll-summary-title" id="enrollSummaryTitle">Selected course</div>
+              <div class="enroll-summary-pills">
+                <span class="enroll-pill">Premium facility</span>
+                <span class="enroll-pill">Concierge support</span>
+                <span class="enroll-pill">Opening 2026</span>
+              </div>
+              <div class="enroll-summary-lines">
+                <div class="enroll-summary-line"><span class="k">To</span><span class="v">${ENROLL_TO_EMAIL}</span></div>
+                <div class="enroll-summary-line"><span class="k">Method</span><span class="v">Direct email</span></div>
+              </div>
+              <div class="enroll-summary-note">Tip: add your phone if you’d like a same-day callback.</div>
+            </aside>
+
+            <form id="enrollForm" class="enroll-form" novalidate>
+              <div class="enroll-grid">
+                <div class="enroll-field">
+                  <label for="enrollFirstName">First name *</label>
+                  <input class="enroll-input" id="enrollFirstName" name="firstName" autocomplete="given-name" required placeholder="First name">
+                </div>
+                <div class="enroll-field">
+                  <label for="enrollLastName">Last name *</label>
+                  <input class="enroll-input" id="enrollLastName" name="lastName" autocomplete="family-name" required placeholder="Last name">
+                </div>
+                <div class="enroll-field enroll-field--full">
+                  <label for="enrollEmail">Email *</label>
+                  <input class="enroll-input" id="enrollEmail" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
+                </div>
+                <div class="enroll-field enroll-field--full">
+                  <label for="enrollPhone">Phone</label>
+                  <input class="enroll-input" id="enrollPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(973) 555-1234">
+                </div>
+                <div class="enroll-field enroll-field--full">
+                  <label for="enrollCourse">Selected program</label>
+                  <select class="enroll-select" id="enrollCourse" name="course" aria-label="Selected course"></select>
+                  <div class="enroll-helper">Auto-selected from what you clicked. You can change it here without closing.</div>
+                </div>
+                <div class="enroll-field enroll-field--full">
+                  <label for="enrollNotes">Message (optional)</label>
+                  <textarea class="enroll-textarea" id="enrollNotes" name="notes" placeholder="Anything we should know? (frequency, skill level, child age, preferred days/time, etc.)"></textarea>
+                </div>
+              </div>
+
+              <div class="enroll-actions">
+                <button type="button" class="enroll-secondary" id="enrollCancel">Not now</button>
+                <button type="submit" class="enroll-cta" id="enrollSubmit">
+                  Send enrollment
+                  <span class="enroll-cta-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(backdrop);
+    return backdrop;
+  }
+
+  const state = {
+    isOpen: false,
+    activeCourseId: '',
+    activeCourseTitle: '',
+    lastFocus: null,
+    courses: [],
+  };
+
+  function setOpen(open) {
+    const backdrop = ensureModal();
+    const dialog = backdrop.querySelector('.enroll-modal');
+    if (!dialog) return;
+
+    state.isOpen = open;
+    if (open) {
+      state.lastFocus = document.activeElement;
+      backdrop.hidden = false;
+      backdrop.classList.add('is-open');
+      backdrop.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        backdrop.querySelector('#enrollFirstName')?.focus();
+      });
+    } else {
+      backdrop.classList.remove('is-open');
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        backdrop.hidden = true;
+      }, 240);
+      if (state.lastFocus && typeof state.lastFocus.focus === 'function') {
+        state.lastFocus.focus();
+      }
+    }
+  }
+
+  function setSelectedCourse(courseId, courseTitle) {
+    state.activeCourseId = escapeForText(courseId);
+    state.activeCourseTitle = escapeForText(courseTitle);
+
+    const backdrop = ensureModal();
+    const titleEl = backdrop.querySelector('#enrollSelectedCourse');
+    const summaryTitleEl = backdrop.querySelector('#enrollSummaryTitle');
+    const selectEl = backdrop.querySelector('#enrollCourse');
+    if (titleEl) titleEl.textContent = state.activeCourseTitle || 'Selected course';
+    if (summaryTitleEl) summaryTitleEl.textContent = state.activeCourseTitle || 'Selected course';
+    if (!selectEl) return;
+
+    // Populate options once (or refresh if course list changed)
+    selectEl.innerHTML = '';
+    state.courses.forEach((c) => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.title;
+      if ((state.activeCourseId && c.id === state.activeCourseId) || (!state.activeCourseId && c.title === state.activeCourseTitle)) {
+        opt.selected = true;
+      }
+      selectEl.appendChild(opt);
+    });
+
+    // If not found, add it as a final option.
+    const hasMatch = [...selectEl.options].some((o) => o.value === state.activeCourseId);
+    if (!hasMatch && state.activeCourseTitle) {
+      const opt = document.createElement('option');
+      opt.value = state.activeCourseId || state.activeCourseTitle;
+      opt.textContent = state.activeCourseTitle;
+      opt.selected = true;
+      selectEl.appendChild(opt);
+    }
+  }
+
+  function collectCourses() {
+    const cards = document.querySelectorAll(selectors.join(','));
+    const out = [];
+    cards.forEach((card, idx) => {
+      const title = escapeForText(card.getAttribute('data-course-title') || card.querySelector('.plan-name, .cta-card-title, h3, h2')?.textContent);
+      if (!title) return;
+      const id = escapeForText(card.getAttribute('data-course-id') || `course-${idx + 1}`);
+      out.push({ id, title });
+    });
+    // de-dupe by id
+    const map = new Map();
+    out.forEach((c) => {
+      if (!map.has(c.id)) map.set(c.id, c);
+    });
+    state.courses = [...map.values()];
+  }
+
+  function validate(form) {
+    const firstName = form.querySelector('#enrollFirstName');
+    const lastName = form.querySelector('#enrollLastName');
+    const email = form.querySelector('#enrollEmail');
+
+    const fields = [firstName, lastName, email].filter(Boolean);
+    let ok = true;
+
+    fields.forEach((el) => {
+      el.classList.remove('is-error');
+      const val = escapeForText(el.value);
+      if (!val) ok = false;
+      if (el === email && val) {
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        if (!emailOk) ok = false;
+      }
+      if (!ok && !val) el.classList.add('is-error');
+      if (el === email && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) el.classList.add('is-error');
+    });
+
+    // Focus first error
+    const firstErr = form.querySelector('.is-error');
+    if (firstErr) firstErr.focus();
+    return ok;
+  }
+
+  function wireModalEvents() {
+    const backdrop = ensureModal();
+    const closeBtn = backdrop.querySelector('#enrollModalClose');
+    const cancelBtn = backdrop.querySelector('#enrollCancel');
+    const form = backdrop.querySelector('#enrollForm');
+    const courseSelect = backdrop.querySelector('#enrollCourse');
+
+    closeBtn?.addEventListener('click', () => setOpen(false));
+    cancelBtn?.addEventListener('click', () => setOpen(false));
+
+    backdrop.addEventListener('click', (e) => {
+      // Click outside modal closes
+      if (e.target === backdrop) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!state.isOpen) return;
+      if (e.key === 'Escape') setOpen(false);
+    });
+
+    courseSelect?.addEventListener('change', () => {
+      const opt = courseSelect.options[courseSelect.selectedIndex];
+      if (!opt) return;
+      setSelectedCourse(opt.value, opt.textContent);
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate(form)) return;
+
+      const payload = {
+        courseId: escapeForText(form.querySelector('#enrollCourse')?.value),
+        courseTitle: escapeForText(form.querySelector('#enrollCourse')?.selectedOptions?.[0]?.textContent) || state.activeCourseTitle,
+        firstName: escapeForText(form.querySelector('#enrollFirstName')?.value),
+        lastName: escapeForText(form.querySelector('#enrollLastName')?.value),
+        email: escapeForText(form.querySelector('#enrollEmail')?.value),
+        phone: escapeForText(form.querySelector('#enrollPhone')?.value),
+        notes: escapeForText(form.querySelector('#enrollNotes')?.value),
+      };
+
+      // Direct-to-owner pipeline (does not touch general contact form logic)
+      const href = buildMailtoHref(payload);
+      window.location.href = href;
+      setOpen(false);
+      form.reset();
+    });
+  }
+
+  function markCardAsInteractive(card) {
+    if (!card) return;
+    if (card.dataset.enrollBound === '1') return;
+    card.dataset.enrollBound = '1';
+    card.setAttribute('role', card.getAttribute('role') || 'button');
+    card.setAttribute('tabindex', card.getAttribute('tabindex') || '0');
+
+    // Add a subtle CTA chip if not present
+    if (!card.querySelector('.course-card-cta')) {
+      const chip = document.createElement('div');
+      chip.className = 'course-card-cta';
+      chip.textContent = 'Enroll now';
+      card.appendChild(chip);
+    }
+
+    const openFromCard = () => {
+      collectCourses();
+      wireModalEvents();
+      const courseTitle = escapeForText(card.getAttribute('data-course-title')) || escapeForText(card.querySelector('.plan-name, .cta-card-title, h3, h2')?.textContent);
+      const courseId = escapeForText(card.getAttribute('data-course-id')) || '';
+      setSelectedCourse(courseId, courseTitle);
+      setOpen(true);
+    };
+
+    card.addEventListener('click', (e) => {
+      // If the card itself is a link, treat it as the trigger (prevent navigation).
+      if (card.tagName === 'A') {
+        e.preventDefault();
+      } else {
+        // Ignore if the user clicked a real link/button inside a non-link card.
+        if (e.target && e.target.closest && e.target.closest('a, button, input, select, textarea')) return;
+      }
+      openFromCard();
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFromCard();
+      }
+    });
+  }
+
+  function bindCards() {
+    document.querySelectorAll(selectors.join(',')).forEach(markCardAsInteractive);
+  }
+
+  collectCourses();
+  bindCards();
+}

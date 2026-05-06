@@ -224,46 +224,6 @@
         decoding="async"
       >
     </div>
-
-    <!-- Glass tabs live inside hero so they appear without scrolling past a full-screen hero -->
-    <div class="glass-tabs-section hero-glass-tabs" role="region" aria-labelledby="club-tabs-heading">
-      <div class="glass-tabs-ambient" aria-hidden="true"></div>
-      <div class="glass-tabs-wrap">
-        <h2 id="club-tabs-heading" class="glass-tabs-heading section-heading">Inside the club</h2>
-        <p class="glass-tabs-sub">Tap a tab—courts, lounge, and social spaces in one premium destination.</p>
-
-        <div class="club-tab-bar" role="tablist" aria-label="Club highlights">
-          <span class="club-tab-indicator" aria-hidden="true"></span>
-          <button type="button" class="club-tab active" role="tab" id="club-tab-courts" aria-selected="true" aria-controls="club-panel-courts" tabindex="0">Championship courts</button>
-          <button type="button" class="club-tab" role="tab" id="club-tab-lounge" aria-selected="false" aria-controls="club-panel-lounge" tabindex="-1">Players lounge</button>
-          <button type="button" class="club-tab" role="tab" id="club-tab-social" aria-selected="false" aria-controls="club-panel-social" tabindex="-1">Social &amp; games</button>
-        </div>
-
-        <div class="club-tab-panels">
-          <div class="club-panel" id="club-panel-courts" role="tabpanel" aria-labelledby="club-tab-courts" tabindex="0">
-            <div class="club-panel-glass">
-              <div class="club-panel-icon" aria-hidden="true">🎾</div>
-              <h3>Six pro-grade courts</h3>
-              <p>Competition surfaces, balanced lighting, and sound mitigation so every rally feels crisp—whether you are drilling or playing league night.</p>
-            </div>
-          </div>
-          <div class="club-panel" id="club-panel-lounge" role="tabpanel" aria-labelledby="club-tab-lounge" hidden tabindex="0">
-            <div class="club-panel-glass">
-              <div class="club-panel-icon" aria-hidden="true">🍹</div>
-              <h3>Mezzanine lounge</h3>
-              <p>A boutique-hotel vibe for post-match hangs, networking, and private events—your clubhouse away from home.</p>
-            </div>
-          </div>
-          <div class="club-panel" id="club-panel-social" role="tabpanel" aria-labelledby="club-tab-social" hidden tabindex="0">
-            <div class="club-panel-glass">
-              <div class="club-panel-icon" aria-hidden="true">🎱</div>
-              <h3>Beyond pickleball</h3>
-              <p>Ping pong, Mah Jongg, canasta, and billiards in curated social spaces—play, pause, and connect without leaving the building.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section class="flagship">
@@ -372,7 +332,17 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
@@ -517,6 +487,13 @@
       </div>
     </div>
   </section>
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Questions about partnerships, programming, or press? We respond quickly.</p>
@@ -534,72 +511,157 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
 <!-- ===== CONTACT PAGE ===== -->
 <div id="page-contact" class="page">
-  <div class="page-header"><h1>Contact</h1></div>
-  <img src="assets/images/contact%20.jpg" alt="PB(973) contact page courts view" class="contact-img" width="1024" height="768" decoding="async">
-  <div class="content-band">
-    <div class="content-band-inner reveal-section" data-reveal="up">
-      <p class="section-kicker">Concierge</p>
-      <h2 class="section-heading">We read every message</h2>
-      <p style="color:#aaa;font-size:15px;line-height:1.7;max-width:560px;margin:0 auto;">Membership questions, junior programming, events, and partnerships route to the same attentive team. Expect a human reply—not an auto-responder.</p>
-      <div class="feature-pills stagger-children">
-        <span class="feature-pill">Opening 2026</span>
-        <span class="feature-pill">Flanders, NJ</span>
-        <span class="feature-pill">Courts · Lounge · Social</span>
+  <!-- HERO BANNER -->
+  <div class="contact-hero">
+    <img src="assets/images/contact%20.jpg" alt="PB(973) concierge and contact desk at the club in Flanders NJ" class="contact-hero-bg" width="1024" height="576" decoding="async">
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <div class="hero-badge"><span>CONCIERGE · MEMBERSHIPS · EVENTS</span></div>
+      <h1 class="contact-hero-heading">Talk to the<br><span class="green">PB(973)</span><br>team.</h1>
+      <p class="contact-hero-sub">Membership questions, junior programming, partnerships, or press — send a note and we will route it to the right person.</p>
+      <div class="contact-quick-actions">
+        <a href="tel:9739737297" class="btn-email">Call (973) 973-7297</a>
+        <a href="mailto:info@pb973.com" class="btn-outline">Email info@pb973.com</a>
       </div>
     </div>
   </div>
-  <div class="contact-form">
-    <div class="reveal-section" data-reveal="left">
-    <form action="mailto:info@pb973.com" method="post" enctype="text/plain" novalidate aria-label="Contact PB(973)">
-    <div class="form-row">
-      <div class="form-group">
-        <label for="cf-firstname">First Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-        <input id="cf-firstname" name="firstName" type="text" autocomplete="given-name" placeholder="First" required aria-required="true">
-      </div>
-      <div class="form-group">
-        <label for="cf-lastname">Last Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-        <input id="cf-lastname" name="lastName" type="text" autocomplete="family-name" placeholder="Last" required aria-required="true">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="cf-email">Email <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-      <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required aria-required="true">
-    </div>
-    <div class="form-address-label">Mailing Address</div>
-    <div class="form-group">
-      <label for="cf-street">Street Address</label>
-      <input id="cf-street" name="street" type="text" autocomplete="street-address" placeholder="123 Main Street">
-    </div>
-    <div class="form-group">
-      <label for="cf-city">City</label>
-      <input id="cf-city" name="city" type="text" autocomplete="address-level2" placeholder="City">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="cf-state">State</label>
-        <select id="cf-state" name="state" autocomplete="address-level1">
-          <option value="">Select state</option>
-          <option value="NJ">NJ</option><option value="NY">NY</option><option value="PA">PA</option><option value="CT">CT</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="cf-zip">Zip Code</label>
-        <input id="cf-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" autocomplete="postal-code" placeholder="12345">
+
+  <!-- CONTACT OPTIONS -->
+  <div class="content-band contact-options-band">
+    <div class="content-band-inner">
+      <div class="contact-options-grid stagger-children">
+        <div class="contact-option-card reveal-section" data-reveal="up">
+          <p class="section-kicker">Fastest</p>
+          <h2 class="section-heading">Call the concierge</h2>
+          <p class="contact-option-desc">Have a quick question or want to talk through membership fit? We can help in minutes.</p>
+          <a href="tel:9739737297" class="btn-solid contact-option-cta">Call now</a>
+        </div>
+        <div class="contact-option-card reveal-section" data-reveal="up">
+          <p class="section-kicker">Any time</p>
+          <h2 class="section-heading">Email the team</h2>
+          <p class="contact-option-desc">Best for partnerships, programming details, and press inquiries. We read every message.</p>
+          <a href="mailto:info@pb973.com" class="btn-solid contact-option-cta">Send email</a>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="cf-message">Question Or Comment?</label>
-      <textarea id="cf-message" name="message" rows="5" placeholder="Your message..."></textarea>
-    </div>
-    <button type="submit" class="btn-submit">Submit</button>
-    </form>
-    <div class="contact-email-line">✉ <a href="mailto:info@pb973.com">info@pb973.com</a></div>
+  </div>
+
+  <!-- FORM -->
+  <div class="contact-form-wrap">
+    <div class="contact-form-inner reveal-section" data-reveal="left">
+      <p class="section-kicker">Send a message</p>
+      <h2 class="section-heading">We respond like humans</h2>
+      <p class="contact-form-sub">Tell us what you are looking for and we will point you in the right direction. No auto-responder, no spam.</p>
+      <form class="contact-form" action="mailto:info@pb973.com" method="post" enctype="text/plain" novalidate aria-label="Contact PB(973)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-firstname">First Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+            <input id="cf-firstname" name="firstName" type="text" autocomplete="given-name" placeholder="First" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="cf-lastname">Last Name <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+            <input id="cf-lastname" name="lastName" type="text" autocomplete="family-name" placeholder="Last" required aria-required="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required aria-required="true">
+        </div>
+        <div class="form-address-label">Mailing Address (optional)</div>
+        <div class="form-group">
+          <label for="cf-street">Street Address</label>
+          <input id="cf-street" name="street" type="text" autocomplete="street-address" placeholder="123 Main Street">
+        </div>
+        <div class="form-group">
+          <label for="cf-city">City</label>
+          <input id="cf-city" name="city" type="text" autocomplete="address-level2" placeholder="City">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-state">State</label>
+            <select id="cf-state" name="state" autocomplete="address-level1">
+              <option value="">Select state</option>
+              <option value="AL">AL</option>
+              <option value="AK">AK</option>
+              <option value="AZ">AZ</option>
+              <option value="AR">AR</option>
+              <option value="CA">CA</option>
+              <option value="CO">CO</option>
+              <option value="CT">CT</option>
+              <option value="DE">DE</option>
+              <option value="DC">DC</option>
+              <option value="FL">FL</option>
+              <option value="GA">GA</option>
+              <option value="HI">HI</option>
+              <option value="ID">ID</option>
+              <option value="IL">IL</option>
+              <option value="IN">IN</option>
+              <option value="IA">IA</option>
+              <option value="KS">KS</option>
+              <option value="KY">KY</option>
+              <option value="LA">LA</option>
+              <option value="ME">ME</option>
+              <option value="MD">MD</option>
+              <option value="MA">MA</option>
+              <option value="MI">MI</option>
+              <option value="MN">MN</option>
+              <option value="MS">MS</option>
+              <option value="MO">MO</option>
+              <option value="MT">MT</option>
+              <option value="NE">NE</option>
+              <option value="NV">NV</option>
+              <option value="NH">NH</option>
+              <option value="NJ">NJ</option>
+              <option value="NM">NM</option>
+              <option value="NY">NY</option>
+              <option value="NC">NC</option>
+              <option value="ND">ND</option>
+              <option value="OH">OH</option>
+              <option value="OK">OK</option>
+              <option value="OR">OR</option>
+              <option value="PA">PA</option>
+              <option value="RI">RI</option>
+              <option value="SC">SC</option>
+              <option value="SD">SD</option>
+              <option value="TN">TN</option>
+              <option value="TX">TX</option>
+              <option value="UT">UT</option>
+              <option value="VT">VT</option>
+              <option value="VA">VA</option>
+              <option value="WA">WA</option>
+              <option value="WV">WV</option>
+              <option value="WI">WI</option>
+              <option value="WY">WY</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-zip">Zip Code</label>
+            <input id="cf-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" autocomplete="postal-code" placeholder="12345">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-message">Question or comment?</label>
+          <textarea id="cf-message" name="message" rows="6" placeholder="Tell us what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send message</button>
+        <div class="contact-email-line">✉ <a href="mailto:info@pb973.com">info@pb973.com</a></div>
+      </form>
     </div>
   </div>
   <section class="page-close" aria-labelledby="contact-close-heading">
@@ -631,6 +693,13 @@
       </div>
     </div>
   </section>
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Prefer the phone? Our team answers during business hours.</p>
@@ -648,7 +717,17 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
@@ -1167,18 +1246,18 @@
       <p style="font-size:15px;color:#888;line-height:1.7;max-width:560px;margin:0 auto 8px;">Both programs share the same premium courts, the same community — and the same commitment to developing great players and great people.</p>
 
       <div class="junior-cta-grid">
-        <a href="#" class="junior-cta-card dd-card" onclick="switchProgram('dinkin'); window.scrollTo(0,0); return false;">
+        <button type="button" class="junior-cta-card dd-card" onclick="switchProgram('dinkin');">
           <div class="cta-card-label dd">🦕 Ages 5–9</div>
           <div class="cta-card-title">Dinkin Dinos</div>
           <div class="cta-card-desc">Fun, characters, badges, and ice cream — the perfect introduction to pickleball for young kids.</div>
           <div class="cta-card-action dd">Explore Dinkin Dinos <span>→</span></div>
-        </a>
-        <a href="#" class="junior-cta-card ce-card" onclick="switchProgram('ce'); window.scrollTo(0,0); return false;">
+        </button>
+        <button type="button" class="junior-cta-card ce-card" onclick="switchProgram('ce');">
           <div class="cta-card-label ce">🎯 All Skill Levels</div>
           <div class="cta-card-title">Competitive Edge</div>
           <div class="cta-card-desc">Serious training, elite coaching, and a clear path from beginner to high-performance competitor.</div>
           <div class="cta-card-action ce">Explore Competitive Edge <span>→</span></div>
-        </a>
+        </button>
       </div>
 
       <div class="stat-grid stagger-children" style="margin-top:48px;">
@@ -1209,6 +1288,13 @@
   </section>
 
   <!-- Footer -->
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Junior Academy updates ship with the main member list — stay on both.</p>
@@ -1226,27 +1312,54 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 
 </div><!-- /page-junior -->
 
 <!-- ===== MEMBERSHIP PAGE ===== -->
 <div id="page-membership" class="page">
-  <div class="page-header"><h1>Membership</h1></div>
-
-  <img src="assets/images/membership.png" alt="PB(973) membership founders team" class="membership-hero-img" width="2048" height="819" decoding="async">
+  <!-- HERO -->
+  <div class="membership-hero">
+    <img src="assets/images/membership.png" alt="PB(973) founders and membership community in Flanders NJ" class="membership-hero-bg" width="2048" height="819" decoding="async">
+    <div class="membership-hero-overlay"></div>
+    <div class="membership-hero-content">
+      <div class="hero-badge"><span>MEMBERSHIP · BOOKING · PERKS</span></div>
+      <h1 class="membership-hero-heading">Choose your<br><span class="green">Code.</span></h1>
+      <p class="membership-hero-sub">From pay-as-you-go to premium unlimited sessions, every tier keeps you inside the same flagship facility — just with different booking depth and perks.</p>
+      <div class="membership-hero-actions">
+        <a href="/contact" class="btn-email" onclick="showPage('contact'); return false;">✉ Join the list</a>
+        <a href="/faq" class="btn-outline" onclick="showPage('faq'); return false;">View FAQ's</a>
+      </div>
+      <div class="membership-hero-note">Opening 2026 · Flanders, NJ · PB(973) Play the Code</div>
+    </div>
+  </div>
 
   <div class="founders-banner">
     <div class="star">☆</div>
-    <h2>Welcome To ALL Members of Founders 125!</h2>
+    <h2>Welcome to all members of Founders 125!</h2>
+    <p class="founders-sub">Founders spots are sold out — but you can still join the list and lock in updates, opening invites, and first access to new drops.</p>
+    <div class="founders-actions">
+      <a href="/contact" class="btn-solid" onclick="showPage('contact'); return false;">Talk to the team</a>
+      <a href="/contact" class="btn-ghost" onclick="showPage('contact'); return false;">Join the email list</a>
+    </div>
   </div>
 
-  <div class="content-band">
-    <div class="content-band-inner reveal-section" data-reveal="blur">
+  <div class="content-band content-band--alt">
+    <div class="content-band-inner reveal-section" data-reveal="up">
       <p class="section-kicker">Member experience</p>
       <h2 class="section-heading">Pick the lane that matches your calendar</h2>
-      <p style="color:#aaa;font-size:15px;line-height:1.7;max-width:640px;margin:0 auto;">From pay-as-you-go to premium unlimited sessions, every tier keeps you inside the same flagship facility—just with different booking depth and perks.</p>
+      <p class="membership-intro">If you play once in a while, start free. If you play weekly, go Code Priority. If you play 3+ times a week, Code Premium is built for you.</p>
     </div>
   </div>
 
@@ -1256,7 +1369,7 @@
     <div class="plans-grid stagger-children">
 
       <!-- Free -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-access-free" data-course-title="Code Access Free Guest Membership">
         <div class="plan-name">Code Access Free Guest Membership</div>
         <div class="plan-subtitle">For Pay As You Go Players</div>
         <div class="plan-price free-price" style="color:var(--white);">Free</div>
@@ -1273,7 +1386,7 @@
       </div>
 
       <!-- Code Priority -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-priority-annual" data-course-title="Code Priority (Annual)">
         <div class="plan-name">Code Priority</div>
         <div class="plan-subtitle">For players who want priority access and the best value year-round</div>
         <div class="plan-price">$199</div>
@@ -1290,7 +1403,7 @@
       </div>
 
       <!-- Founders Code 125 -->
-      <div class="plan-card featured">
+      <div class="plan-card featured" data-course-card="1" data-course-id="founders-code-125" data-course-title="FOUNDERS CODE 125 (Annual)">
         <div class="founders-badge">⭐ FOUNDERS SPECIAL</div>
         <div class="plan-name" style="margin-top:16px;">FOUNDERS CODE 125</div>
         <div class="plan-subtitle">Payment will be due on/about March 1st, 2026 To Our First Member Pre-Registrations</div>
@@ -1311,7 +1424,7 @@
       </div>
 
       <!-- Code Priority Senior 65+ -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-priority-senior-annual" data-course-title="Code Priority Senior 65+ (Annual)">
         <div class="plan-name">Code Priority Senior 65+</div>
         <div class="plan-subtitle">For the senior players who play daily and want priority advanced access and reduced fees</div>
         <div class="plan-price">$169</div>
@@ -1334,7 +1447,7 @@
     <div class="monthly-grid stagger-children">
 
       <!-- Code Social Play -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-social-play-monthly" data-course-title="Code Social Play (Monthly)">
         <div class="plan-name">Code Social Play</div>
         <div class="plan-subtitle">Great for Players who enjoy Mah Jong, Canasta, Ping Pong and Billiards</div>
         <div class="plan-price">$69</div>
@@ -1348,7 +1461,7 @@
       </div>
 
       <!-- Code Daily Open Play -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-daily-open-play-monthly" data-course-title="Code Daily Open Play (Monthly)">
         <div class="plan-name">Code Daily Open Play</div>
         <div class="plan-subtitle">Great Value for Players who like to play in daily open play sessions without the commitment</div>
         <div class="plan-price">$149</div>
@@ -1363,7 +1476,7 @@
       </div>
 
       <!-- Code Premium -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-premium-monthly" data-course-title="Code Premium (Monthly)">
         <div class="plan-name">Code Premium</div>
         <div class="plan-subtitle">Exceptional Value for Dedicated Players (3+ Times Per Week)</div>
         <div class="plan-price">$179</div>
@@ -1385,7 +1498,7 @@
       </div>
 
       <!-- Code Premium Senior 65+ -->
-      <div class="plan-card">
+      <div class="plan-card" data-course-card="1" data-course-id="code-premium-senior-monthly" data-course-title="Code Premium Senior 65+ (Monthly)">
         <div class="plan-name">Code Premium Senior 65+</div>
         <div class="plan-subtitle">For senior dedicated players who want premium benefits at a reduced rate</div>
         <div class="plan-price">$169</div>
@@ -1413,7 +1526,7 @@
   <div class="punch-card-section">
     <div class="reveal-section" data-reveal="scale">
     <h2 class="section-heading">Code Punch Card</h2>
-    <div class="punch-card">
+    <div class="punch-card" data-course-card="1" data-course-id="code-punch-card" data-course-title="Code Punch Card (14 plays)">
       <div class="pc-title">CODE PUNCH CARD</div>
       <div class="pc-avail">Available to Players with Yearly Paid Membership</div>
       <div class="pc-price">$189</div>
@@ -1450,22 +1563,29 @@
         <cite>PB(973) member success</cite>
       </blockquote>
       <div class="mini-cta-row">
-        <a href="faq.html" class="btn-outline" onclick="showPage('faq'); return false;">FAQ's</a>
-        <a href="contact.html" class="btn-solid" onclick="showPage('contact'); return false;">Talk to us</a>
+        <a href="/faq" class="btn-outline" onclick="showPage('faq'); return false;">FAQ's</a>
+        <a href="/contact" class="btn-solid" onclick="showPage('contact'); return false;">Talk to us</a>
       </div>
     </div>
   </section>
 
   <div class="membership-cta">
-    <a href="contact.html" class="btn-email" onclick="showPage('contact'); return false;" style="background:var(--green);color:var(--black);padding:14px 40px;font-size:15px;font-weight:800;border-radius:50px;text-decoration:none;display:inline-block;">Join The List</a>
+    <a href="/contact" class="btn-email" onclick="showPage('contact'); return false;" style="background:var(--green);color:var(--black);padding:14px 40px;font-size:15px;font-weight:800;border-radius:50px;text-decoration:none;display:inline-block;">Join The List</a>
   </div>
 
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Lock your spot on the list—founders may be full, but the club is just getting started.</p>
       <div class="footer-cta-actions">
-        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
+        <a href="/contact" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="/" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
       </div>
     </div>
     <div>
@@ -1477,51 +1597,70 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
 <!-- ===== PRESS PAGE ===== -->
 <div id="page-press" class="page">
-  <div class="page-header"><h1>Press</h1></div>
-  <div class="content-band content-band--alt">
-    <div class="content-band-inner reveal-section" data-reveal="up">
-      <p class="section-kicker">Media</p>
-      <h2 class="section-heading">PB(973) in the headlines</h2>
-      <p style="color:#aaa;font-size:15px;line-height:1.7;max-width:600px;margin:0 auto;">Lease milestones and development coverage from outlets following Morris County retail and sports facilities.</p>
+  <div class="press-hero">
+    <div class="press-hero-bg" aria-hidden="true">
+      <div class="press-hero-orb press-hero-orb--1"></div>
+      <div class="press-hero-orb press-hero-orb--2"></div>
+    </div>
+    <div class="press-hero-inner reveal-section" data-reveal="up">
+      <p class="press-hero-kicker">Media</p>
+      <h1 class="press-hero-title">PB(973) in the<br><span class="press-hero-accent">headlines</span></h1>
+      <p class="press-hero-sub">Lease milestones and development coverage from outlets following Morris County retail and sports facilities.</p>
+      <div class="press-hero-actions">
+        <a href="mailto:info@pb973.com" class="btn-email">✉ info@pb973.com</a>
+        <a href="/contact" class="btn-outline" onclick="showPage('contact'); return false;">Press contact</a>
+      </div>
     </div>
   </div>
-  <div class="press-page-wrap">
-  <div class="reveal-section" data-reveal="left">
-  <div class="press-grid stagger-children">
 
-    <!-- NJ Biz card -->
-    <div class="press-card">
-      <div class="press-card-inner">
-        <div class="press-outlet" style="color:#003399;font-size:22px;font-weight:900;border-bottom:3px solid #003399;padding-bottom:8px;margin-bottom:12px;">NJBIZ</div>
-        <div class="img-placeholder" style="height:180px;border-radius:8px;background:#eee;border:none;">
-          <div style="color:#999;"><div style="font-size:28px;">🏬</div><div>ShopRite — Flanders, NJ</div></div>
-        </div>
-        <div class="press-headline">15K-square-foot indoor pickleball spot coming to Morris County</div>
-        <div class="press-meta" style="color:#999;">Jessica Perry · January 29, 2025 · 2 Minute Read</div>
-        <div class="press-body">A ShopRite anchored retail center in Morris County will add another big draw, with plans for the latest PB (973) Pickleball facility. RIPCO Real Estate announced the indoor pickleball club signed a 15,000-square-foot lease at the ShopRite Shopping Center in Flanders Jan 27. The club is expected to join the lineup this summer at the 73,000-square-foot neighborhood retail center at 90 Bartley Road.</div>
+  <div class="press-section">
+    <div class="press-section-inner">
+      <div class="press-feature reveal-section" data-reveal="left">
+        <p class="section-kicker">Featured story</p>
+        <h2 class="section-heading">15K-square-foot indoor pickleball spot coming to Morris County</h2>
+        <p class="press-feature-meta">NJBIZ · Jessica Perry · January 29, 2026</p>
+        <p class="press-feature-desc">PB(973) Pickleball signed a 15,000-square-foot lease at the ShopRite Shopping Center in Flanders (90 Bartley Road), adding a major new draw for the Morris County community.</p>
+        <a class="btn-solid press-read-btn" href="https://njbiz.com/indoor-pickleball-15k-sf-morris-county/" target="_blank" rel="noopener noreferrer">Read on NJBIZ ↗</a>
       </div>
-    </div>
 
-    <!-- RE-NJ card -->
-    <div class="press-card press-card-re">
-      <div class="re-header">
-        <div class="re-logo-text">REALESTATE<span style="font-weight:900;">NJ</span></div>
-        <div class="re-tagline">The Voice of New Jersey Commercial Real Estate</div>
+      <div class="press-cards stagger-children">
+        <a class="press-card-new reveal-section" data-reveal="up" href="https://njbiz.com/indoor-pickleball-15k-sf-morris-county/" target="_blank" rel="noopener noreferrer" aria-label="Read NJBIZ coverage about PB(973)">
+          <div class="press-card-top">
+            <div class="press-outlet-pill press-outlet-pill--njbiz">NJBIZ</div>
+            <div class="press-card-icon" aria-hidden="true">📰</div>
+          </div>
+          <div class="press-card-title">15K-square-foot indoor pickleball spot coming to Morris County</div>
+          <div class="press-card-meta">Jan 29, 2026 · Deal announcement</div>
+          <div class="press-card-cta">Open article ↗</div>
+        </a>
+
+        <a class="press-card-new reveal-section" data-reveal="up" href="https://re-nj.com/pickleball-coming-to-flanders-shopping-center-under-15000-sq-ft-deal-ripco-says/" target="_blank" rel="noopener noreferrer" aria-label="Read Real Estate NJ coverage about PB(973)">
+          <div class="press-card-top">
+            <div class="press-outlet-pill press-outlet-pill--renj">Real Estate NJ</div>
+            <div class="press-card-icon" aria-hidden="true">🏢</div>
+          </div>
+          <div class="press-card-title">Pickleball coming to Flanders shopping center under 15,000 sq. ft. deal</div>
+          <div class="press-card-meta">Feb 2, 2026 · Retail leasing</div>
+          <div class="press-card-cta">Open article ↗</div>
+        </a>
       </div>
-      <div class="img-placeholder re-img" style="border-radius:0;background:#ddd;border:none;height:180px;">
-        <div style="color:#999;"><div style="font-size:28px;">🏬</div><div>ShopRite — Flanders</div></div>
-      </div>
-      <div class="re-sub">RE-NJ</div>
-      <div class="re-sub2">Pickleball coming to Flanders shopping center under 15,000 sq ft deal ↗</div>
     </div>
-  </div>
-  </div>
   </div>
 
   <section class="page-close" aria-labelledby="press-close-heading">
@@ -1549,17 +1688,24 @@
       </blockquote>
       <div class="mini-cta-row">
         <a href="mailto:info@pb973.com" class="btn-email">✉ info@pb973.com</a>
-        <a href="contact.html" class="btn-ghost" onclick="showPage('contact'); return false;">Contact form</a>
+        <a href="/contact" class="btn-ghost" onclick="showPage('contact'); return false;">Contact form</a>
       </div>
     </div>
   </section>
 
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Booking a shoot or need a fact sheet? Start with email—we reply fast.</p>
       <div class="footer-cta-actions">
-        <a href="contact.html" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
-        <a href="index.html" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
+        <a href="/contact" class="btn-outline" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="/" class="btn-solid" onclick="showPage('home'); return false;">Home</a>
       </div>
     </div>
     <div>
@@ -1571,7 +1717,17 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
@@ -1794,6 +1950,13 @@
     </div>
   </section>
 
+  <section class="social-follow" aria-label="Follow PB(973) on social media">
+    <p>Like And Follow Us On Facebook / Instagram</p>
+    <div class="social-row">
+      <a href="#" class="social-btn fb" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="PB(973) Facebook icon" width="22" height="22" decoding="async"></a>
+      <a href="#" class="social-btn ig" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="PB(973) Instagram icon" width="22" height="22" decoding="async"></a>
+    </div>
+  </section>
   <footer>
     <div class="footer-cta-strip">
       <p>Bookmark this page — we update answers as opening week approaches.</p>
@@ -1811,7 +1974,17 @@
       <p><a href="mailto:info@pb973.com">info@pb973.com</a></p>
       <p>© 2026 PB(973). All rights reserved.</p>
     </div>
-    <div class="footer-bottom"></div>
+    <div class="footer-bottom">
+      <div class="footer-social-links">
+        <span>Join us</span>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Facebook">
+          <img src="assets/icons/facebook.svg" alt="PB(973) Facebook" width="18" height="18" decoding="async">
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Join PB(973) on Instagram">
+          <img src="assets/icons/instagram.svg" alt="PB(973) Instagram" width="18" height="18" decoding="async">
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
